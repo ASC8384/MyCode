@@ -1,5 +1,5 @@
 void dijkstra(void){
-	memset(map, 1, sizeof map);
+	//预先 memset(map, 1, sizeof map);
 	memset(djk, 1, sizeof djk);
 	for(int i = 1; i <= n; i++)
 		djk[i] = map[s][i];
