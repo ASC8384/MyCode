@@ -1,0 +1,1 @@
+**AutoHotKey**模板
