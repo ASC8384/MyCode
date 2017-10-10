@@ -13,3 +13,6 @@ CapsLock & u::Send {PgUp}
 !j::Send {Down}
 !k::Send {Up}
 !l::Send {Right}
+
+CapsLock & w::Send {WheelUp}
+CapsLock & s::Send {WheelDown}
