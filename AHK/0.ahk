@@ -16,3 +16,5 @@ CapsLock & u::Send {PgUp}
 
 CapsLock & w::Send {WheelUp}
 CapsLock & s::Send {WheelDown}
+
+#NoTrayIcon
