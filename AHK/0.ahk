@@ -16,9 +16,7 @@ CapsLock & u::Send {PgUp}
 
 CapsLock & w::Send {WheelUp}
 CapsLock & s::Send {WheelDown}
-	
-$CapsLock::Escape
+
+::asc::ASC_8384@foxmail.com
 
 #NoTrayIcon
-
-;F11::Reload
