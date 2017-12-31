@@ -16,5 +16,9 @@ CapsLock & u::Send {PgUp}
 
 CapsLock & w::Send {WheelUp}
 CapsLock & s::Send {WheelDown}
+	
+$CapsLock::Escape
 
 #NoTrayIcon
+
+;F11::Reload
