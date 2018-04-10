@@ -36,7 +36,7 @@ set mouse =a        "鼠标为a，插入在右
 set smartindent     "智能缩进
 set tabstop =4      "缩进
 set softtabstop =4  "tab = 4 空格
-imap jj <esc>       "jj == ESC
+imap jj <esc>
 set nobackup        "无备份
 syntax on           "语法自动高亮
 set showmatch       "括号配对
