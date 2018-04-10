@@ -13,6 +13,7 @@ import re
 import os
 import urllib
 import urllib3
+import time
 
 client = ZhihuClient()
 # 登录
@@ -51,3 +52,4 @@ for answer in question.answers:
             # 不过新的python3方法不在原来的路径了
             print(u"成功在封号或封IP前保存第%d张图片" % index)
             index += 1
+    time.sleep(1)
