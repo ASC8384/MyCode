@@ -1,4 +1,4 @@
 import sys
 
-for place in sys.path
+for place in sys.path:
     print (place)
