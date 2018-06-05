@@ -37,8 +37,10 @@ function! MyDiff()
   endif
 endfunction
 
+let mapleader=","
+" 定义快捷键的前缀，即<Leader>
 
-
+" '中文' 的配置
 set fileencodings=utf-8,gb2312,gb18030,gbk,chinese,ucs-bom,cp936,latin1,euc-jp,euc-kr  "显示中文
 set encoding=utf-8
 if has("win32")
@@ -55,6 +57,7 @@ language messages zh_CN.utf-8
 set ambiwidth=double
 " 设置为双字宽显示，否则无法完整显示如:☆
 
+" '搜索' 的配置
 autocmd cursorhold * set nohlsearch
 " 当光标一段时间保持不动了，就禁用高亮
 noremap n :set hlsearch<cr>n
@@ -64,6 +67,7 @@ noremap ? :set hlsearch<cr>?
 noremap * *:set hlsearch<cr>
 " 当输入查找命令时，再启用高亮
 
+" '插件'
 "
 call plug#begin('$VIM/plugs')
 "
@@ -72,29 +76,45 @@ Plug 'junegunn/vim-plug', {'on': []}
 " 需要时用`plug#load('vim-plug', 'ultisnips', 'YouCompleteMe')`
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'joshdick/onedark.vim'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'chriskempson/tomorrow-theme'
+Plug 'arcticicestudio/nord-vim'
 " 主题配色
 Plug 'scrooloose/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
-	Plug 'Xuyuanp/nerdtree-git-plugin'
+	Plug 'Xuyuanp/nerdtree-git-plugin', {'on': []}
 " 树形目录
 Plug 'jiangmiao/auto-pairs'
 " 符号补全
-"Plug 'Valloric/YouCompleteMe', {'on': []}
-" 代码补全, md, py 不支持
-"if has('nvim')
-"  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"else
-"  Plug 'Shougo/deoplete.nvim'
-"  Plug 'roxma/nvim-yarp'
-"  Plug 'roxma/vim-hug-neovim-rpc'
-"endif
-" 补全框架, md, py 不支持
+" Plug 'Valloric/YouCompleteMe'
+" 代码补全, 放弃了
+" if has('nvim')
+	" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+	" Plug 'Shougo/deoplete.nvim'
+	" Plug 'roxma/nvim-yarp'
+	" Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+" 补全框架
+" Plug 'Shougo/neco-syntax'
+" 自然语言
+" Plug 'autozimu/LanguageClient-neovim'
+" 语言服务
 Plug 'sheerun/vim-polyglot'
+Plug 'octol/vim-cpp-enhanced-highlight'
 " 语法高亮
-Plug 'junegunn/goyo.vim'
-" 安心写作
-Plug 'junegunn/limelight.vim'
-" 关灯看书
+Plug 'nathanaelkane/vim-indent-guides'
+" 缩进可视
+Plug 'kshenoy/vim-signature'
+"	Plug 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+" 书签管理
+Plug 'derekwyatt/vim-fswitch', {'on': []}
+" 切换文件
+Plug 'vim-scripts/minibufexplorerpp', {'on': []}
+" 缓存浏览
 Plug 'terryma/vim-multiple-cursors'
 " 多行选择
 Plug 'terryma/vim-smooth-scroll'
@@ -106,63 +126,129 @@ Plug 'airblade/vim-gitgutter'
 " Git 行号
 Plug 'tpope/vim-fugitive'
 " Git 大法
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
-Plug 'joker1007/vim-markdown-quote-syntax'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+" 安心写作
+Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+" 关灯看书
+Plug 'iamcco/mathjax-support-for-mkdp', { 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.vim', { 'for': 'markdown' }
 " Markdown
-Plug 'yegappan/mru'
+Plug 'yegappan/mru', { 'on': ['MRU'] }
 " 上次编辑
-"
-" 1. Github 支持
-" 插件格式为 Plug '用户名/插件仓库名'
-" https://github.com/morhetz/gruvbox
-" Plug 'morhetz/gruvbox'
-" 2. Git 支持
-" 任何有效的git URL都是允许的
-" https://github.com/junegunn/vim-github-dashboard.git
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-" 3. 使用|分隔符可以在一行中编写多个Plug命令
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" 4. 非托管插件（手动安装和更新）
-" Plug '~/my-prototype-plugin'
-" 
-" 5. 按需加载
-" for 文件类型
-" on  命令
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" "NERD树将在第一次调用NERDTreeToggle命令时加载
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" "当clojure文件被打开时加载
-" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
-" "for、on 后面也可以跟着列表
-" Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
-" "一起用也没事
-" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-" autocmd! User goyo.vim echom 'Goyo is now loaded!'
-" "当插件按需延迟加载时执行的代码
-" 
-" 6. 命令
-" PlugInstall [name ...] [#threads] 	安装插件
-" PlugUpdate [name ...] [#threads]		安装或更新插件
-" PlugClean[!]							删除未使用的目录（bang版本将在没有提示的情况下清除）
-" PlugUpgrade							升级vim-plug本身
-" PlugStatus							检查插件的状态
-" PlugDiff								检查上次更新和未决更改的更改
-" PlugSnapshot[!] [output path]			生成脚本以恢复插件的当前快照
+Plug 'scrooloose/nerdcommenter'
+" 快速注释
+Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign'] }
+" 快速对齐
+Plug 'skywind3000/asyncrun.vim'
+" 异步命令
+Plug 'bronson/vim-trailing-whitespace', {'on': ['FixWhitespace']}
+" 行尾空格
+Plug 'vim-scripts/YankRing.vim', {'on': ['YRShow']}
+" 剪贴可视
+Plug 'ap/vim-css-color', {'for': ['html', 'js', 'css']}
+" 颜色预览
+Plug 'hyiltiz/vim-plugins-profile', {'on': []}
+" 优化启动
+Plug 'ryanoasis/vim-devicons', {'on': []}
+" 最后启动
 "
 call plug#end()
 
-function! s:plug_loaded(spec)
-  let rtp = join(filter([a:spec.dir, get(a:spec, 'rtp', '')], 'len(v:val)'), '/')
-  return stridx(&rtp, rtp) >= 0 && isdirectory(rtp)
-endfunction
-function! s:plug_names(...)
-    return sort(filter(keys(filter(copy(g:plugs), { k, v -> !s:plug_loaded(v) })), 'stridx(v:val, a:1) != -1'))
-endfunction
-command! -nargs=+ -bar -complete=customlist,s:plug_names PlugLoad call plug#load([<f-args>])
-" 手动加载插件
-" 命令`:PlugLoad vim-go` 来加载 vim-go 这个插件.
-" `:PlugLoad` 命令可以自动补全当前未加载的插件.
+" 'vim-plug' 的配置
+let g:plug_retries=5
+" 超时情况下的重试次数
+let g:plug_window="vertical bo new"
+" 命令打开插件窗口于右侧
+
+" markdown
+let g:mkdp_auto_start = 1
+" 设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览
+" 只在打开markdown 文件的时候打开一次
+let g:mkdp_auto_open = 1
+" 设置为 1 在编辑 markdown 的时候检查预览窗口是否已经打开，否则自动打开预览窗口
+nmap <silent> <F3> <Plug>MarkdownPreview
+imap <silent> <F3> <Plug>MarkdownPreview
+nmap <silent> <F4> <Plug>StopMarkdownPreview
+imap <silent> <F4> <Plug>StopMarkdownPreview
+" 快捷键
+
+" 'asyncrun' 的配置
+let g:asyncrun_encs = 'utf-8'
+" Chinese char
+let g:asyncrun_open = 8
+" 设置g:asyncrun_open为8将在命令启动后以8行高度自动打开quickfix窗口
+" 不用:copen {height}来打开quickfix窗口
+let g:asyncrun_bell = 1
+" 敲响钟声通知你作业完成
+nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
+" F10切换quickfix窗口
+let g:asyncrun_status = "stopped"
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+" vim-airline 的匹配
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+" vim-fugitive 的适配
+function! g:CscopeDone()
+	exec "cs add ".fnameescape(g:asyncrun_text)
+endfunc
+function! g:CscopeUpdate(workdir, cscopeout)
+	let l:cscopeout = fnamemodify(a:cscopeout, ":p")
+	let l:cscopeout = fnameescape(l:cscopeout)
+	let l:workdir = (a:workdir == '')? '.' : a:workdir
+	try | exec "cs kill ".l:cscopeout | catch | endtry
+	exec "AsyncRun -post=call\\ g:CscopeDone() ".
+				\ "-text=".l:cscopeout." "
+				\ "-cwd=".fnameescape(l:workdir)." ".
+				\ "cscope -b -R -f -q".l:cscopeout
+endfunc
+noremap <F1> :call g:CscopeUpdate(".", "cscope.out")<cr>
+" 更新和添加 cscope
+
+" 'quickfix' 的配置
+augroup vimrc
+    autocmd QuickFixCmdPost * botright copen 8
+augroup END
+" 文本添加时自动打开quickfix窗口（也会由其他quickfix命令触发）
+
+" 'vim-scripts/YankRing.vim' 的配置
+let g:yankring_history_dir=$VIM.'/.VIM/'
+" yankring的历史文件夹
+nmap <Leader>r :YRShow<CR>
+" <leader>r显示yankring中的内容
+let g:yankring_replace_n_pkey = '<Leader>n'
+" <leader>n选择下一个复制的文本
+
+" 'vim-trailing-whitespace'
+map <leader><space> :FixWhitespace<cr>
+" ,加空格就可以删去行末空格
+
+" 'vim-easy-align'
+vmap <Leader>a <Plug>(EasyAlign)
+" nmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a :EasyAlign
+
+" 'nerdcommenter' 的配置
+let g:NERDSpaceDelims = 1
+" 默认情况下在注释分隔符后面添加空格
+let g:NERDTrimTrailingWhitespace = 1
+" 在取消注释时删去尾部空白
+
+" 'MiniBufExplorer' 的配置
+let g:miniBufExplMapCTabSwitchBufs = 1
+" <C-Tab> 向前循环切换到每个buffer上,并在但前窗口打开
+" <C-S-Tab> 向后循环切换到每个buffer上,并在但前窗口打开
+
+" 'vim-multiple-cursors' 的配置
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+" 自定义
+nnoremap <silent> <Leader>m :MultipleCursorsFind
 
 " 'vim-gitgutter' 的配置
 set updatetime=100
@@ -170,30 +256,38 @@ set updatetime=100
 let g:gitgutter_grep=''
 let g:gitgutter_terminal_reports_focus=0
 
-" 'vim-plug' 的配置
-let g:plug_retries=5
-" 超时情况下的重试次数
-let g:plug_window="vertical bo new"
-" 命令打开插件窗口
+" 'vim-fswitch' 的配置
+nmap <silent> <Leader>s :FSHere<cr>
+" *.cpp 和 *.h 间切换
+
+" 'vim-indent-guides' 的配置
+let g:indent_guides_enable_on_vim_startup=1
+" 随 vim 自启动
+let g:indent_guides_start_level=2
+" 从第三层开始可视化显示缩进
+let g:indent_guides_guide_size=1
+" 色块宽度
+:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+" 快捷键 i 开/关缩进可视化
 
 " 'deoplete.nvim' 的配置
 let g:deoplete#enable_at_startup = 1
 " Use deoplete
 
 " 'MRU' 的配置
-let MRU_File=$VIM.'\mru_files' 
+let MRU_File=$VIM.'\mru_files'
 " 文件位置
 let MRU_Max_Entries=500
 " 记录的条数
-let MRU_Window_Height=10
+let MRU_Window_Height=7
 " 窗口的大小
 let MRU_Auto_Close=1
 "选择文件后打开此窗口自动关闭
-map <silent> ,h :MRU<CR>
+map <silent> <Leader>h :MRU<CR>
 " ,h 打开MRU
 
 " 'NERDTree' 的配置
-nmap ,t : NERDTreeToggle<CR>
+nmap <Leader>t : NERDTreeToggle<CR>
 " 隐藏或调出NERDTree
 let g:nerdtree_tabs_open_on_console_startup=1
 "在终端启动vim时，共享NERDTree, 默认打开目录树
@@ -216,13 +310,14 @@ let g:nerdtree_tabs_autofind=0
 " 在NERDTree中自动查找并选择当前打开的文件
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" 当 vim 启动没指定文件时，自动打开 NERDTree 
+" 当 vim 启动没指定文件时，自动打开 NERDTree
 let NERDTreeSortOrder=['//$', '/.md$', '/.c$','/.cpp$', '/.h$', '/.py$', '/.lua$', '*']
 " 排序
 " let NERDTreeCaseSensitiveSort=0
 " 不分大小写排序
 let g:NERDTreeShowIgnoredStatus = 0
 " show ignored status
+let g:loaded_nerdtree_git_status = 1
 let g:NERDTreeShowGitStatus = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -239,15 +334,33 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 " Git 标识
-au GUIEnter * simalt ~x 
+au GUIEnter * simalt ~x
 "默认最大化窗口打开
-" :NERDTreeTabsFind	查找当前打开的文件并选择它
-" :tabc	  关闭当前的 tab
-" :tabo   关闭所有其他的 tab
-" :tabp   前一个 tab
-" :tabn   后一个 tab
-" gT      前一个 tab
-" gt      后一个 tab
+
+" 'vim-signature' 的配置
+let g:SignatureMap = {
+        \ 'Leader'             :  "m",
+        \ 'PlaceNextMark'      :  "m,",
+        \ 'ToggleMarkAtLine'   :  "m.",
+        \ 'PurgeMarksAtLine'   :  "m-",
+        \ 'DeleteMark'         :  "dm",
+        \ 'PurgeMarks'         :  "mda",
+        \ 'PurgeMarkers'       :  "m<BS>",
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  "`]",
+        \ 'GotoPrevSpotAlpha'  :  "`[",
+        \ 'GotoNextLineByPos'  :  "]'",
+        \ 'GotoPrevLineByPos'  :  "['",
+        \ 'GotoNextSpotByPos'  :  "mn",
+        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'GotoNextMarker'     :  "[+",
+        \ 'GotoPrevMarker'     :  "[-",
+        \ 'GotoNextMarkerAny'  :  "]=",
+        \ 'GotoPrevMarkerAny'  :  "[=",
+        \ 'ListLocalMarks'     :  "ms",
+        \ 'ListLocalMarkers'   :  "m?"
+        \ }
 
 " 'vim-airline' 的配置
 let g:airline_theme="minimalist"
@@ -268,17 +381,17 @@ let g:airline#extensions#whitespace#symbol = '!'
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 "进入goyo模式后自动触发limelight,退出后则关闭
-map ,l :Goyo<CR>
+map <Leader>l :Goyo<CR>
 
 " 'markdown-preview.vim' 的配置
-let g:mkdp_auto_start = 1
+" let g:mkdp_auto_start = 1
 " 打开 markdown 文件的时候自动打开浏览器预览
-let g:mkdp_auto_close = 1
+" let g:mkdp_auto_close = 1
 " 在切换 buffer 的时候不自动关闭预览窗口
-nmap <silent> <F8> <Plug>MarkdownPreview
-imap <silent> <F8> <Plug>MarkdownPreview
-nmap <silent> <F7> <Plug>StopMarkdownPreview
-imap <silent> <F7> <Plug>StopMarkdownPreview
+" nmap <silent> <F8> <Plug>MarkdownPreview
+" imap <silent> <F8> <Plug>MarkdownPreview
+" nmap <silent> <F7> <Plug>StopMarkdownPreview
+" imap <silent> <F7> <Plug>StopMarkdownPreview
 
 " 'vim-smooth-scroll' 的配置
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -291,33 +404,80 @@ set bg=dark
 " 设置背景为黑色
 colorscheme gruvbox
 " 设置主题为 gruvbox
-" colorscheme solarized
 " let g:gruvbox_(option) = '(value)'
 let g:gruvbox_italic = '0'
 " 对中文这种宽字体的支持，去掉斜体
+" colorscheme onedark
+" colorscheme solarized
+" let g:molokai_original = 1
+" let g:rehash256 = 1
 
 " '快捷键' 的配置
-imap jj <ESC>
-map <F11> : ! gcc % -o %< -g -Wall -Wextra -Wconversion && -o<CR>
-"F11 编译并运行
-map <F9> : ! gdb %< <CR>
-"F9 调试
+inoremap jj <ESC>
+" mapping
+" map <F11> : AsyncRun gcc -g -Wall -Wextra -Wconversion % -o %<<CR>
+" ! gcc -O2 % -o %<
+nnoremap <silent> <F11> :AsyncRun gcc -g -Wall -Wextra -Wconversion "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+" <F11>编译
+" nnoremap <silent> <F11> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+nnoremap <silent> <F10> :AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+" nnoremap <silent> <F10> :AsyncRun -cwd=$(VIM_FILEDIR) -mode=4 "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>
+" <F10> 运行，注释为windows cmd
+" if the process is running is a non-tty environment, 则标准输出中的所有数据都将被缓冲，直到进程退出。
+" 如果想看到实时输出，printf语句后必须有一个fflush(stdout)
+" 可以在开始时关闭stdout缓冲区
+" setbuf(stdout, NULL);
+" C++ 代码，则可以将std::endl附加到std::cout的末尾
+nnoremap <silent> <F9> : ! gdb %< <CR>
+" F9	调试
+nnoremap <silent> <F5> : AsyncRun python % <cr>
+" F5	python
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-h> <c-w>h
 nmap <c-l> <c-w>l
 " 分屏时的移动
-nmap ,i : tabedit $MYVIMRC<cr>
+nmap <Leader>v : tabedit $MYVIMRC<cr>
 " 打开一个 tab 去编辑 .vimrc 文件
-" $MYVIMRC 是环境变量，值为：~/.vimrc
-nmap ,c : close<CR>
+" $MYVIMRC 是环境变量，一般值为：~/.vimrc
+nmap <Leader>c : close<CR>
+nmap <Leader>q : q<cr>
 " 关闭文件
-imap ,w <ESC> : w
+imap <Leader>w <ESC> : w
 " 保存文件
-nmap U <C-r>
+nnoremap U <C-r>
 " 撤回撤消
+vnoremap <Leader>y "+y
+" 将选中文本块复制至系统剪贴板
+nmap <Leader>p "+p
+" 将系统剪贴板内容粘贴至 vim
+noremap <silent><leader>1 :tabn 1<cr>
+noremap <silent><leader>2 :tabn 2<cr>
+noremap <silent><leader>3 :tabn 3<cr>
+noremap <silent><leader>4 :tabn 4<cr>
+noremap <silent><leader>5 :tabn 5<cr>
+noremap <silent><leader>6 :tabn 6<cr>
+noremap <silent><leader>7 :tabn 7<cr>
+noremap <silent><leader>8 :tabn 8<cr>
+noremap <silent><leader>9 :tabn 9<cr>
+noremap <silent><leader>0 :tabn 10<cr>
+" <leader>0-9 来快速切换tab
+vnoremap < <gv
+vnoremap > >gv
+" 调整整体缩进后自动选中，方便再次操作
+
+" '代码折叠' 的配置
+"set foldmethod=indent
+set foldmethod=syntax
+" 基于缩进或语法进行代码折叠
+set nofoldenable
+" 启动 vim 时关闭折叠代码
 
 " 'set' 的配置
+filetype on
+" 开启文件类型侦测
+filetype plugin on
+" 根据侦测到的不同类型加载对应的插件
 " color evening
 " 配色
 set autoread
@@ -329,40 +489,192 @@ set mouse=a
 set smartindent
 " 智能缩进
 set tabstop=4
-" 缩进
+" 设置编辑时制表符占用空格数
 set shiftwidth=4
+" 设置格式化时制表符占用空格数
 set softtabstop=4
-" tab = 4 空格
+" 让 vim 把连续数量的空格视为一个制表符
 set nobackup
+set undofile
 set noswapfile
-" 无备份
+set undodir=~/.undodir
+" 无备份，或备份统一到一个目录下
 syntax enable
 syntax on
 " 语法自动高亮
 set showmatch
 " 括号配对
-set clipboard=unnamed
+" set clipboard=unnamed
 " 系统剪切板共享
 set history=2000
 " 设置历史记录条数
 set t_Co=256
 " 256色
+set guifont=YaHei_Consolas_Hybrid:h12
 " set guifont=Courier_new:h14:cDEFAULT
 " 字体大小, Monaco, Courier_new, :b:cDEFAULT
 " set guifont=Bitstream_Vera_Sans_Mono:h12:cDEFAULT:cGB2312
-set guifont=Inziu_Iosevka_SC:h12
+" set guifont=Inziu_Iosevka_SC:h12
 "set guioptions=
 "去掉两边的滚动条
 set cursorline
 " 高亮当前行
+" set cursorcolumn
+" 高亮当前列
+set ruler
+" 显示光标当前位置
 set showmode
 " 左下角显示当前 vim 模式
-set guioptions=
-" 去掉两边的滚动条
-" set modifiable
+set modifiable
 " 使编码可以写入
 " set sxe="("
 " win 下目录问题
 " set shell=\"C:\Green\cmder\Cmder.exe"\ -f
 set wrap
 "设置自动折行
+"set nowrap
+"禁止折行
+set wildmenu
+" vim 自身命令行模式智能补全
+set ignorecase
+" 搜索时大小写不敏感
+" set guioptions=
+" 去掉两边的滚动条
+set guioptions-=m
+set guioptions-=T
+" 禁止显示菜单和工具条
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+" 禁止显示滚动条
+set scrolloff=7
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+
+cd D:\projects
+" 目录
+set pythonthreedll=C:\Users\Administrator.WIN7U-20120726C\AppData\Local\Programs\Python\Python36\python36.dll
+" python 目录
+
+" 命令查看
+"
+" ctags
+" ctags -R --c++-kinds=+p+l+x+c+d+e+f++m+n+s+t+u+v --fields=+liaS --extra=+q --language-force=c++
+" 命令行下
+"
+" 代码折叠
+" za, 打开或关闭当前折叠
+" zM, 关闭所有折叠
+" zR, 打开所有折叠
+"
+" Git
+" 实用Fugitive
+" :Gdiff					查看本次修改和仓库里代码的改动
+" :Gstatus					显示 !git status的输出
+" :Gwrite					写入文件, git add, git checkout
+" :Gread					git checkout -- filename的变体
+" :Gpush					!git push
+" :Gcommit -m "something"	!git commit -m "something"
+"
+" 快速对齐
+" vip	选择多行
+" ,a	进入easyalign模式
+" *|	是指对|对齐
+" * 可以换成数字，对应后面的第几个字符，*就是全部都指定
+" | 可以化成空格
+" 默认向左对其，比如按照空格对其  *<space>
+" 向右对其 <enter>*<space>
+" 居中对其 <enter><enter>*<space>
+" 按<CTRL-/>或<CTRL-X>键，则可以键入正则表达式，而不是使用分隔键完成对齐。
+"
+" 注释
+"  ,ca，在可选的注释方式之间切换，比如C/C++ 的块注释/* */和行注释//
+"  ,cc，注释当前行
+"  ,c ，切换注释/非注释状态
+"  ,cs，以”性感”的方式注释
+"  ,cA，在当前行尾添加注释符，并进入Insert模式
+"  ,cu，取消注释
+" Normal模式下，几乎所有命令前面都可以指定行数。
+" 比如  输入  6,cs    的意思就是以性感方式注释光标所在行开始6行代码
+" Visual模式下执行命令，会对选中的特定区块进行注释/反注释
+"
+" MiniBufExplorer
+" 最上面一行，用<C-wk>进入
+" <Tab>		向前循环切换到每个buffer名上
+" <S-Tab>	向后循环切换到每个buffer名上
+" <Enter>	在打开光标所在的buffer
+" d			删除光标所在的buffer
+" :bn		打开当前buffer的下一个buffer
+" :bp		打开当前buffer的前一个buffer
+" :b"num"   打开指定的buffer
+"
+" 多行选择
+" <Cn> 进入类似sublimetext的多光标选中
+" 第二次按<Cn> 使用所选匹配
+" <Cn>		向下选中一个
+" <Cp>		放弃一个, 回到上一个
+" <Cx>		跳过当前选中, 选中下一个
+" <esc>		退出
+"
+" 书签设定
+" m[a-zA-Z]	；打标签，打两次就撤除
+" m,		；自动设定下一个可用书签名, 因为独立书签名是不能重复的，避免冲突
+" mda		；删除当前文件中所有独立书签
+" 书签罗列
+" m?		；罗列出当前文件中所有书签，选中后回车可直接跳转
+" 书签跳转
+" mn		；按行号前后顺序，跳转至下个独立书签
+" mp		；按行号前后顺序，跳转至前个独立书签
+" '[a-zA-Z]	；跳转到标签位置，'`'在1的左边，esc的下面
+" ''        ；跳回来的地方(最近两个位置跳转)
+" '. 或 `]` ；最后一次变更的地方
+" `[		；倒数第二次
+"
+" NERDTree
+" :NERDTreeTabsFind	查找当前打开的文件并选择它
+"
+" tab
+" :tabnew 新建标签
+" :tabc	  关闭当前的 tab
+" :tabo   关闭所有其他的 tab
+" :tabp   前一个 tab
+" :tabn   后一个 tab
+" gT      前一个 tab
+" gt      后一个 tab
+"
+" vim-plug
+" 1. Github 支持
+" 插件格式为 Plug '用户名/插件仓库名'
+" https://github.com/morhetz/gruvbox
+" Plug 'morhetz/gruvbox'
+" 2. Git 支持
+" 任何有效的git URL都是允许的
+" https://github.com/junegunn/vim-github-dashboard.git
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" 3. 使用|分隔符可以在一行中编写多个Plug命令
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" 4. 非托管插件（手动安装和更新）
+" Plug '~/my-prototype-plugin'
+" 5. 按需加载
+" for 文件类型
+" on  命令
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" "NERD树将在第一次调用NERDTreeToggle命令时加载
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" "当clojure文件被打开时加载
+" Plug 'junegunn/vim-github-dashboard', { 'on': ['GHDashboard', 'GHActivity'] }
+" "for、on 后面也可以跟着列表
+" Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
+" "一起用也没事
+" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+" autocmd! User goyo.vim echom 'Goyo is now loaded!'
+" "当插件按需延迟加载时执行的代码
+" 6. 命令
+" PlugInstall [name ...] [#threads] 	安装插件
+" PlugUpdate [name ...] [#threads]		安装或更新插件
+" PlugClean[!]							删除未使用的目录（bang版本将在没有提示的情况下清除）
+" PlugUpgrade							升级vim-plug本身
+" PlugStatus							检查插件的状态
+" PlugDiff								检查上次更新和未决更改的更改
+" PlugSnapshot[!] [output path]			生成脚本以恢复插件的当前快照
+
