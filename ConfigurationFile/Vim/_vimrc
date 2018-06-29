@@ -1,3 +1,16 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                   _vimrc                                   "
+"" Copyright	Human
+"" Author		ASC_8384
+"" Mail			ASC_8384@foxmail.com
+"" Website		http://ASC8384.top
+"" filename		_vimrc
+"" Description	Win 下GVim 配置
+"" homepageURL	https://github.com/ASC8384/MyCodeSnippets
+"" license		CC0
+"" Time			2018-06-29
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -37,7 +50,7 @@ function! MyDiff()
   endif
 endfunction
 
-let mapleader=","
+let mapleader=";"
 " 定义快捷键的前缀，即<Leader>
 
 " '中文' 的配置
@@ -71,7 +84,7 @@ noremap * *:set hlsearch<cr>
 "
 call plug#begin('$VIM/plugs')
 "
-Plug 'junegunn/vim-plug', {'on': []}
+Plug 'junegunn/vim-plug'
 " 插件管理，其实这个有没有无所谓，只是为了': h plug-options'方便
 " 需要时用`plug#load('vim-plug', 'ultisnips', 'YouCompleteMe')`
 Plug 'morhetz/gruvbox'
@@ -84,32 +97,33 @@ Plug 'arcticicestudio/nord-vim'
 " 主题配色
 Plug 'scrooloose/nerdtree'
 	Plug 'jistr/vim-nerdtree-tabs'
-	Plug 'Xuyuanp/nerdtree-git-plugin', {'on': []}
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 " 树形目录
 Plug 'jiangmiao/auto-pairs'
 " 符号补全
-" Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe', {'on': []}
+Plug 'maralla/completor.vim'
 " 代码补全, 放弃了
 " if has('nvim')
-	" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }, {'on': []}
 " else
-	" Plug 'Shougo/deoplete.nvim'
-	" Plug 'roxma/nvim-yarp'
-	" Plug 'roxma/vim-hug-neovim-rpc'
+	" Plug 'Shougo/deoplete.nvim', {'on': []}
+	" Plug 'roxma/nvim-yarp', {'on': []}
+	" Plug 'roxma/vim-hug-neovim-rpc', {'on': []}
 " endif
-" let g:deoplete#enable_at_startup = 1
-" 补全框架
-" Plug 'Shougo/neco-syntax'
-" 自然语言
-" Plug 'autozimu/LanguageClient-neovim'
-" 语言服务
+" " let g:deoplete#enable_at_startup = 1
+" " 补全框架
+" Plug 'Shougo/neco-syntax', {'on': []}
+" " 自然语言
+" Plug 'autozimu/LanguageClient-neovim', {'on': []}
+" " 语言服务
 Plug 'sheerun/vim-polyglot'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " 语法高亮
 Plug 'nathanaelkane/vim-indent-guides'
 " 缩进可视
 Plug 'kshenoy/vim-signature'
-"	Plug 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
+	Plug 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines', {'on': []}
 " 书签管理
 Plug 'derekwyatt/vim-fswitch', {'on': []}
 " 切换文件
@@ -143,10 +157,16 @@ Plug 'skywind3000/asyncrun.vim'
 " 异步命令
 Plug 'bronson/vim-trailing-whitespace', {'on': ['FixWhitespace']}
 " 行尾空格
-Plug 'vim-scripts/YankRing.vim', {'on': ['YRShow']}
+Plug 'vim-scripts/YankRing.vim'
 " 剪贴可视
 Plug 'ap/vim-css-color', {'for': ['html', 'js', 'css']}
 " 颜色预览
+Plug 'SirVer/ultisnips'
+" 片段补全
+Plug 'honza/vim-snippets'
+" 常用判断
+Plug 'mzlogin/vim-markdown-toc', {'for': ['markdown']}
+" 文档目录
 Plug 'hyiltiz/vim-plugins-profile', {'on': []}
 " 优化启动
 Plug 'ryanoasis/vim-devicons', {'on': []}
@@ -160,8 +180,29 @@ let g:plug_retries=5
 let g:plug_window="vertical bo new"
 " 命令打开插件窗口于右侧
 
+" 'completor'
+let g:completor_python_binary = ""
+" let g:completor_clang_binary = "C:/Program\ Files/LLVM/lib"
+let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
+" completor 唯一简单的补全
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" 用Tab 移动，Enter 选择
+
+" 'ultisnips'
+let g:UltiSnipsExpandTrigger="<leader><Tab>"
+" Insert Mode 展开键
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>" 
+"触发器配置。如果使用https://github.com/Valloric/YouCompleteMe，请勿使用<tab>。 
+let g:UltiSnipsEditSplit="context"
+" 定义编辑窗口的打开方式, 用UltiSnipsEdit分裂你的窗口
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+", $VIM/UltiSnips]
+
 " markdown
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 " 设置为 1 可以在打开 markdown 文件的时候自动打开浏览器预览
 " 只在打开markdown 文件的时候打开一次
 let g:mkdp_auto_open = 1
@@ -181,7 +222,7 @@ let g:asyncrun_open = 8
 let g:asyncrun_bell = 1
 " 敲响钟声通知你作业完成
 nnoremap <F2> :call asyncrun#quickfix_toggle(6)<cr>
-" F10切换quickfix窗口
+" F2切换quickfix窗口
 let g:asyncrun_status = "stopped"
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 " vim-airline 的匹配
@@ -271,7 +312,7 @@ let g:indent_guides_guide_size=1
 " 快捷键 i 开/关缩进可视化
 
 " 'deoplete.nvim' 的配置
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " Use deoplete
 
 " 'MRU' 的配置
@@ -315,13 +356,13 @@ let NERDTreeSortOrder=['//$', '/.md$', '/.c$','/.cpp$', '/.h$', '/.py$', '/.lua$
 " 排序
 " let NERDTreeCaseSensitiveSort=0
 " 不分大小写排序
-let g:NERDTreeShowIgnoredStatus = 0
+let g:NERDTreeShowIgnoredStatus=0
 " show ignored status
-let g:loaded_nerdtree_git_status = 1
-let g:NERDTreeShowGitStatus = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeIndicatorMapCustom = {
+" let g:loaded_nerdtree_git_status=1
+" let g:NERDTreeShowGitStatus=1
+let g:NERDTreeDirArrowExpandable='▸'
+let g:NERDTreeDirArrowCollapsible='▾'
+let g:NERDTreeIndicatorMapCustom={
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -383,16 +424,6 @@ autocmd! User GoyoLeave Limelight!
 "进入goyo模式后自动触发limelight,退出后则关闭
 map <Leader>l :Goyo<CR>
 
-" 'markdown-preview.vim' 的配置
-" let g:mkdp_auto_start = 1
-" 打开 markdown 文件的时候自动打开浏览器预览
-" let g:mkdp_auto_close = 1
-" 在切换 buffer 的时候不自动关闭预览窗口
-" nmap <silent> <F8> <Plug>MarkdownPreview
-" imap <silent> <F8> <Plug>MarkdownPreview
-" nmap <silent> <F7> <Plug>StopMarkdownPreview
-" imap <silent> <F7> <Plug>StopMarkdownPreview
-
 " 'vim-smooth-scroll' 的配置
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
@@ -405,8 +436,8 @@ set bg=dark
 colorscheme gruvbox
 " 设置主题为 gruvbox
 " let g:gruvbox_(option) = '(value)'
-let g:gruvbox_italic = '0'
-" 对中文这种宽字体的支持，去掉斜体
+let g:gruvbox_italic = '1'
+" 对中文这种宽字体的支持，去掉斜体; 不过现在可以了哦
 " colorscheme onedark
 " colorscheme solarized
 " let g:molokai_original = 1
@@ -550,10 +581,13 @@ set guioptions-=R
 " 禁止显示滚动条
 set scrolloff=7
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set rop=type:directx,renmode:5
+" 增强win 下GVim 显示
 
-cd D:\projects
+" cd 
 " 目录
-set pythonthreedll=C:\Users\Administrator.WIN7U-20120726C\AppData\Local\Programs\Python\Python36\python36.dll
+" set pythonthreedll=
+" set pythondll=
 " python 目录
 
 " 命令查看
