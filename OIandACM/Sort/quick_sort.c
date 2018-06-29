@@ -1,3 +1,14 @@
+/**********************************************************************
+*                                quick_sort.c                         *
+** Copyright	Human
+** Author		ASC_8384
+** Mail			ASC_8384@foxmail.com
+** Website		http://ASC8384.top
+** FileName		quick_sort.c
+** Description	快速排序
+** HomepageURL	https://github.com/ASC8384/MyCodeSnippets
+** License		CC0
+**********************************************************************/
 //int a[sizesize];
 void quicksort(int left,int right)
 {

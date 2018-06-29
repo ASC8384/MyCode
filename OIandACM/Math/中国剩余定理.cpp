@@ -1,3 +1,15 @@
+/**********************************************************************
+*                            中国孙子剩余定理.cpp                                *
+** Copyright	Human
+** Author		ASC_8384
+** Mail			ASC_8384@foxmail.com
+** Website		http://ASC8384.top
+** FileName		中国孙子剩余定理.cpp
+** Description	中国孙子剩余定理
+** HomepageURL	https://github.com/ASC8384/MyCodeSnippets
+** License		CC0
+**********************************************************************/
+
 int extended_gcd(int a, int b, int &x, int &y){
 	int ret;
 	if(!b){

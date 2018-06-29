@@ -1,5 +1,18 @@
+/**********************************************************************
+*                            quick_sort.c                            *
+Copyright	Human
+Author		ASC_8384
+Mail			ASC_8384@foxmail.com
+Website		http://ASC8384.top
+FileName		quick_sort.c
+Description	快速排序
+HomepageURL	https://github.com/ASC8384/MyCodeSnippets
+License		CC0
+Time			date
+**********************************************************************/
+
 //int a[sizesize];
-void quicksort(int left,int right)
+void quick_sort(int a[], int left,int right)
 {
     int tl = left;
     int tr = right;
@@ -18,9 +31,9 @@ void quicksort(int left,int right)
             tl++;
         }
     } while (tl < tr);
-    if (tl < right) quicksort(tl,right);
-    if (tr > left) quicksort(left,tr);
+    if (tl < right) quick_sort(tl,right);
+    if (tr > left) quick_sort(left,tr);
 }
-//quicksort(1,n);
+//quick_sort(1,n);
 
 //从1开始,到n结束
