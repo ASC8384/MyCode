@@ -1,13 +1,13 @@
 '''
-@Copyright	Human
-@Author		ASC_8384
-@Mail		ASC_8384@foxmail.com
+@Copyright	    Human
+@Author		    ASC_8384
+@Mail		    ASC_8384@foxmail.com
 @Website		http://ASC8384.top
-@FileName	zhihu.py
+@FileName	    save_answer_all_images.py
 @Description	保存知乎某个问题下所有未折叠答案的图片
 @HomepageURL	https://github.com/ASC8384/MyCodeSnippets
 @License		CC0
-@Time	    2018-07-18
+@Time	        2018-07-18
 '''
 from zhihu_oauth import ZhihuClient
 import re

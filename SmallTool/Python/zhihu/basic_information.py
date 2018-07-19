@@ -3,7 +3,7 @@
 @Author	    	ASC_8384
 @Mail		    ASC_8384@foxmail.com
 @Website	    http://ASC8384.top
-@FileName	    zhihu.py
+@FileName	    basic_information.py
 @Descriptio 	基础信息
 @HomepageURL    https://github.com/ASC8384/MyCodeSnippets
 @License	    CC0
