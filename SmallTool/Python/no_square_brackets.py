@@ -14,13 +14,14 @@
 import os
 import re
 
+
 def no_square_brackets(source):
     """
     去除文件名中的[]、【】符号
     """
     change = re.sub('(【.*】)', '', source)
     change = re.sub('(\[.*\])', '', change)
-    print (change)
+    print(change)
     os.rename(source, change)
 
 

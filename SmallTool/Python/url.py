@@ -14,12 +14,14 @@
 import urllib.parse
 import os
 
+
 def change(sourse, charset):
-    if charset == True:
+    if charset is True:
         ret = urllib.parse.unquote(sourse, 'utf-8')
     else:
         ret = urllib.parse.unquote(sourse, 'gbk')
     return ret
+
 
 def init():
     name = input()
@@ -51,10 +53,9 @@ if __name__ == "__main__":
             char = True
         elif putin == 6:
             os.rename(backupa, backupb)
-            print ('撤消成功！')
+            print('撤消成功！')
         else:
             backupb = putin[:]
             backupa = change(putin, char)
             os.rename(putin, backupa)
-            print (backupa)
-
+            print(backupa)

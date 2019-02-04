@@ -16,4 +16,4 @@ import sys
 
 if __name__ == "__main__":
     for place in sys.path:
-        print (place)
+        print(place)
