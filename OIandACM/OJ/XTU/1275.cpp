@@ -1,14 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+char a[9][233];
+int ans[6][88], cnt, top[8];
+
 int main()
 {
 	ios::sync_with_stdio(false);
 	int k, n, t, s, e;
 	string d;
 	//char d[9];
-	char a[9][233];
-	int ans[6][11], cnt, top[8];
+
 	int st, ed;
 	string tmp[7] = {"", "Mon", "Tue", "Wen", "Thur", "Fri"};
 	cin >> k;
@@ -31,7 +33,7 @@ int main()
 					for(int j = s; j <= e; j++)
 						a[3][j] = 1;
 				if(d == "Thur")
-				 for(int j = s; j <= e; j++)
+					for(int j = s; j <= e; j++)
 						a[4][j] = 1;
 				if(d == "Fri")
 					for(int j = s; j <= e; j++)
@@ -40,7 +42,7 @@ int main()
 		for(int i = 1; i <= 5; i++){
 			for(st = 1; st <= 11; st++){
 				for(ed = st; ed <= st + t - 1; ed++)
-					if(a[i][st] == 0 &&
+					if(a[i][ed] == 0 &&
 						((st <= 4 && ed <= 4) || 
 						(4 < st && st <= 8 && ed <= 8) || 
 						(9 <= st && ed <= 11)))
@@ -52,7 +54,7 @@ int main()
 					ans[i][++top[i]] = ed - 1;
 				}
 			}
-			cnt += top[i]/2;
+			cnt += (top[i] >> 1);
 		}
 		cout << cnt << endl;
 		for(int i = 1; i <= 5; i++)
