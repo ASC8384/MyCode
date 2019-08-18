@@ -10,17 +10,28 @@ inline int init(void){
 	return x;
 }
 
-int a[] = {11, 1001, 100001, 101101, 110011};
-// int a[] = {11, 1001, 1111, 100001, 101101, 110011, 111111};
-
 int main()
 {
+	// freopen("std.in", "r", stdin);
+	// freopen("std.out", "w", stdout);
+
 	int t = init();
 
 	while(t--){
 		int n = init();
-		int ans;
-		;
+		if(n % 11){
+			printf("0\n");
+		}else{
+			int minn = 100000;
+			for(int i = 0; i <= n / 1111; i++){
+				int tmp = n - 1111 * i;// 还剩下多少
+				minn = min(minn, i + // 1111
+								 tmp / 1001 + // 1001
+								 tmp % 1001 / 11 // 11
+								 );
+			}
+			printf("%d\n", minn);
+		}
 	}
 	return 0;
 }
