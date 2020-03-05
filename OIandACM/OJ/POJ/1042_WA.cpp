@@ -31,7 +31,6 @@ int main() {
 			scanf("%d", t + i);
 			t[i] += t[i - 1];
 		}
-		maxx = -1;
 
 		for(int i = 1; i <= n; i++) {
 			priority_queue<now> que;
@@ -60,7 +59,7 @@ int main() {
 		printf("%d", ans[1] * 5);
 		for(int i = 2; i <= n; i++)
 			printf(", %d", ans[i] * 5);
-		printf("\nNumber of fish expected: %d\n\n", maxx);
+		printf("\nNumber of fish expected: %d\n", maxx);
 	}
 	return 0;
 }
