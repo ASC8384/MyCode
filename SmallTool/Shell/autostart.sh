@@ -4,4 +4,4 @@
 /bin/bash ~/code/dwm/sh/dwm-status.sh &
 /bin/bash ~/code/dwm/sh/two-finger-scroll.sh &
 
-picom -b
+picom -b --config ~/.config/picom.conf
