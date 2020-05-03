@@ -1,5 +1,5 @@
 get_time(){
-	date '+%y-%m-%M %a %T'
+	date '+%y-%m-%d %a %T'
 }
 
 get_mem(){
