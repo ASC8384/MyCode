@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ret=$(ps ax | grep -v grep | grep wp-autochange)
+ret=$(ps ax | grep -v grep | grep sh/sh/wp_autochange)
 if [ "$ret" != "" ]; then
 	exit
 fi
