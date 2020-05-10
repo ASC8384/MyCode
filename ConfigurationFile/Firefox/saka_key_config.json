@@ -1,0 +1,766 @@
+{
+  "activeProfiles": {
+    "General": "power",
+    "Keybindings": "default_copy_1518624316087",
+    "Appearance": "vimium_copy_1518624397694",
+    "Blacklist": "default_copy_1583308113569"
+  },
+  "profiles": {
+    "General": {},
+    "Keybindings": {
+      "default_copy_1518624316087": {
+        "physicalKeys": true,
+        "ignoreModifierKeys": false,
+        "toggleHelpMenu": [],
+        "toggleSaka": [
+          [
+            {
+              "code": "KeyL",
+              "key": "l"
+            }
+          ]
+        ],
+        "hintChars": "asdfqwerzxcv",
+        "openLink": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyF",
+              "key": "f"
+            }
+          ]
+        ],
+        "openLinkInBackgroundTab": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyB",
+              "key": "b"
+            }
+          ],
+          [
+            {
+              "code": "KeyF",
+              "key": "F",
+              "shiftKey": true,
+              "ctrlKey": false,
+              "altKey": false,
+              "metaKey": false
+            }
+          ]
+        ],
+        "openLinkInForegroundTab": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyF",
+              "key": "F",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "openLinkInNewWindow": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyN",
+              "key": "n"
+            }
+          ]
+        ],
+        "openLinkInIncognitoWindow": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyN",
+              "key": "N",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "downloadLink": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyD",
+              "key": "d"
+            }
+          ]
+        ],
+        "focusInput": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyI",
+              "key": "i"
+            }
+          ]
+        ],
+        "focusLink": [
+          [
+            {
+              "code": "KeyF",
+              "key": "f"
+            },
+            {
+              "code": "KeyL",
+              "key": "l"
+            }
+          ]
+        ],
+        "goBack": [
+          [
+            {
+              "code": "KeyC",
+              "key": "c"
+            },
+            {
+              "code": "KeyC",
+              "key": "c"
+            }
+          ]
+        ],
+        "goForward": [
+          [
+            {
+              "code": "KeyV",
+              "key": "v"
+            },
+            {
+              "code": "KeyV",
+              "key": "v"
+            }
+          ]
+        ],
+        "nextPage": [],
+        "previousPage": [],
+        "goUp": [
+          [
+            {
+              "code": "KeyU",
+              "key": "u"
+            },
+            {
+              "code": "KeyU",
+              "key": "u"
+            }
+          ]
+        ],
+        "goToRoot": [
+          [
+            {
+              "code": "KeyU",
+              "key": "u"
+            },
+            {
+              "code": "KeyU",
+              "key": "U",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "scrollDown": [
+          [
+            {
+              "code": "KeyD",
+              "key": "d"
+            }
+          ],
+          [
+            {
+              "code": "KeyJ",
+              "key": "j"
+            }
+          ]
+        ],
+        "scrollUp": [
+          [
+            {
+              "code": "KeyS",
+              "key": "s"
+            }
+          ],
+          [
+            {
+              "code": "KeyK",
+              "key": "k"
+            }
+          ]
+        ],
+        "scrollRight": [
+          [
+            {
+              "code": "KeyD",
+              "key": "∂",
+              "altKey": true
+            }
+          ]
+        ],
+        "scrollLeft": [
+          [
+            {
+              "code": "KeyS",
+              "key": "ß",
+              "altKey": true
+            }
+          ]
+        ],
+        "scrollPageDown": [
+          [
+            {
+              "code": "KeyJ",
+              "key": "J",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "scrollPageUp": [
+          [
+            {
+              "code": "KeyK",
+              "key": "K",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "scrollHalfPageDown": [
+          [
+            {
+              "code": "KeyD",
+              "key": "D",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "scrollHalfPageUp": [
+          [
+            {
+              "code": "KeyS",
+              "key": "S",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "scrollToBottom": [
+          [
+            {
+              "code": "KeyG",
+              "key": "G",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "scrollToTop": [
+          [
+            {
+              "code": "KeyG",
+              "key": "g"
+            },
+            {
+              "code": "KeyG",
+              "key": "g"
+            }
+          ]
+        ],
+        "scrollToLeft": [],
+        "scrollToRight": [],
+        "zoomIn": [
+          [
+            {
+              "code": "KeyZ",
+              "key": "z"
+            }
+          ]
+        ],
+        "zoomOut": [
+          [
+            {
+              "code": "KeyZ",
+              "key": "Z",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "zoomReset": [
+          [
+            {
+              "code": "KeyZ",
+              "key": "Ω",
+              "altKey": true
+            }
+          ],
+          [
+            {
+              "code": "KeyZ",
+              "key": "¸",
+              "altKey": true,
+              "shiftKey": true
+            }
+          ]
+        ],
+        "newTab": [
+          [
+            {
+              "code": "KeyT",
+              "key": "T",
+              "shiftKey": true,
+              "ctrlKey": false,
+              "altKey": false,
+              "metaKey": false
+            }
+          ]
+        ],
+        "restoreTab": [
+          [
+            {
+              "code": "KeyT",
+              "key": "t",
+              "shiftKey": false,
+              "ctrlKey": false,
+              "altKey": false,
+              "metaKey": false
+            }
+          ]
+        ],
+        "duplicateTab": [
+          [
+            {
+              "code": "KeyB",
+              "key": "b"
+            }
+          ]
+        ],
+        "newWindow": [
+          [
+            {
+              "code": "KeyN",
+              "key": "n"
+            }
+          ]
+        ],
+        "newIncognitoWindow": [
+          [
+            {
+              "code": "KeyN",
+              "key": "N",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "closeTab": [
+          [
+            {
+              "code": "KeyX",
+              "key": "x"
+            },
+            {
+              "code": "KeyX",
+              "key": "x"
+            }
+          ]
+        ],
+        "closeOtherTabs": [
+          [
+            {
+              "code": "KeyX",
+              "key": "x"
+            },
+            {
+              "code": "KeyX",
+              "key": "X",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "closeRightTabs": [
+          [
+            {
+              "code": "KeyX",
+              "key": "x"
+            },
+            {
+              "code": "BracketRight",
+              "key": "]"
+            }
+          ]
+        ],
+        "closeLeftTabs": [
+          [
+            {
+              "code": "KeyX",
+              "key": "x"
+            },
+            {
+              "code": "BracketLeft",
+              "key": "["
+            }
+          ]
+        ],
+        "refreshTab": [
+          [
+            {
+              "code": "KeyR",
+              "key": "r",
+              "shiftKey": false,
+              "ctrlKey": true,
+              "altKey": false,
+              "metaKey": false
+            }
+          ]
+        ],
+        "refreshAllTabs": [],
+        "hardRefreshTab": [
+          [
+            {
+              "code": "KeyR",
+              "key": "R",
+              "shiftKey": true
+            },
+            {
+              "code": "KeyR",
+              "key": "R",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "nextTab": [
+          [
+            {
+              "code": "BracketRight",
+              "key": "]"
+            }
+          ],
+          [
+            {
+              "code": "KeyW",
+              "key": "w"
+            }
+          ]
+        ],
+        "previousTab": [
+          [
+            {
+              "code": "BracketLeft",
+              "key": "["
+            }
+          ],
+          [
+            {
+              "code": "KeyQ",
+              "key": "q"
+            }
+          ]
+        ],
+        "firstTab": [
+          [
+            {
+              "code": "KeyQ",
+              "key": "Q",
+              "shiftKey": true
+            }
+          ],
+          [
+            {
+              "code": "Digit1",
+              "key": "1"
+            }
+          ]
+        ],
+        "lastTab": [
+          [
+            {
+              "code": "KeyW",
+              "key": "W",
+              "shiftKey": true
+            }
+          ],
+          [
+            {
+              "code": "Digit0",
+              "key": "0"
+            }
+          ]
+        ],
+        "moveTabLeft": [
+          [
+            {
+              "code": "BracketLeft",
+              "key": "{",
+              "shiftKey": true
+            }
+          ],
+          [
+            {
+              "code": "KeyI",
+              "key": "i"
+            }
+          ],
+          [
+            {
+              "code": "KeyE",
+              "key": "e",
+              "shiftKey": false,
+              "ctrlKey": false,
+              "altKey": false,
+              "metaKey": false
+            }
+          ]
+        ],
+        "moveTabRight": [
+          [
+            {
+              "code": "BracketRight",
+              "key": "}",
+              "shiftKey": true
+            }
+          ],
+          [
+            {
+              "code": "KeyO",
+              "key": "o"
+            }
+          ],
+          [
+            {
+              "code": "KeyR",
+              "key": "r",
+              "shiftKey": false,
+              "ctrlKey": false,
+              "altKey": false,
+              "metaKey": false
+            }
+          ]
+        ],
+        "moveTabFirst": [
+          [
+            {
+              "code": "BracketLeft",
+              "key": "“",
+              "altKey": true
+            }
+          ],
+          [
+            {
+              "code": "KeyI",
+              "key": "I",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "moveTabLast": [
+          [
+            {
+              "code": "BracketRight",
+              "key": "‘",
+              "altKey": true
+            }
+          ],
+          [
+            {
+              "code": "KeyO",
+              "key": "O",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "moveTabNewWindow": [],
+        "toggleMuteTab": [
+          [
+            {
+              "code": "KeyM",
+              "key": "m"
+            }
+          ]
+        ],
+        "toggleMuteAllTabs": [
+          [
+            {
+              "code": "KeyM",
+              "key": "M",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "togglePinTab": [
+          [
+            {
+              "code": "KeyP",
+              "key": "p"
+            }
+          ]
+        ],
+        "switchWindow": [
+          [
+            {
+              "code": "Digit5",
+              "key": "%"
+            }
+          ]
+        ],
+        "passOneKey": [
+          [
+            {
+              "code": "Semicolon",
+              "key": ";"
+            }
+          ]
+        ],
+        "passAllKeys": [
+          [
+            {
+              "code": "Semicolon",
+              "key": ":",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "exitPassMode": [
+          [
+            {
+              "code": "KeyX",
+              "key": "x",
+              "ctrlKey": true
+            }
+          ]
+        ],
+        "copyURL": [
+          [
+            {
+              "code": "KeyY",
+              "key": "y"
+            },
+            {
+              "code": "KeyY",
+              "key": "y"
+            }
+          ]
+        ],
+        "clipboardCurrentTab": [
+          [
+            {
+              "code": "KeyY",
+              "key": "y"
+            },
+            {
+              "code": "KeyF",
+              "key": "f"
+            }
+          ]
+        ],
+        "clipboardBackgroundTab": [
+          [
+            {
+              "code": "KeyY",
+              "key": "y"
+            },
+            {
+              "code": "KeyB",
+              "key": "b"
+            }
+          ]
+        ],
+        "clipboardForegroundTab": [
+          [
+            {
+              "code": "KeyY",
+              "key": "y"
+            },
+            {
+              "code": "KeyF",
+              "key": "F",
+              "shiftKey": true
+            }
+          ]
+        ],
+        "clipboardNewWindow": [
+          [
+            {
+              "code": "KeyY",
+              "key": "y"
+            },
+            {
+              "code": "KeyN",
+              "key": "n"
+            }
+          ]
+        ],
+        "clipboardIncognitoWindow": [
+          [
+            {
+              "code": "KeyY",
+              "key": "y"
+            },
+            {
+              "code": "KeyN",
+              "key": "N",
+              "shiftKey": true
+            }
+          ]
+        ]
+      }
+    },
+    "Appearance": {
+      "vimium_copy_1518624397694": {
+        "hintUseTargetSize": true,
+        "hintFontSize": 12,
+        "hintHorizontalPlacement": "left",
+        "hintVerticalPlacement": "top",
+        "hintUseCustomCSS": true,
+        "hintHorizontalTranslation": 0,
+        "hintVerticalTranslation": 0,
+        "hintTextColor": "#ff4081",
+        "hintBackgroundColor": "#ffffff",
+        "hintBorderColor": "#ff4081",
+        "hintOpacity": "1",
+        "hintFontFamily": "Roboto, sans-serif",
+        "hintFontWeight": "500",
+        "hintHorizontalPadding": 0.25,
+        "hintVerticalPadding": 0.15,
+        "hintBorderWidth": 1,
+        "hintBorderRadius": 4,
+        "hintShadow": true,
+        "hintCSS": "font-family: Helvetica, Arial, sans-serif;\nfont-weight: 100;\nfont-size: 12px;\npadding: 0px 2px;\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785), color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\nborder-radius: 4px;\ncolor: black;\nfont-weight: bold;\ntext-align: center;\ntext-decoration: none;\ntext-transform: uppercase;\nvertical-align: middle;\ntext-shadow: rgba(255, 255, 255, 0.6) 0px 1px 0px;\nfont-weight: bold;",
+        "hintNormalCharCSS": "",
+        "hintActiveCharCSS": "opacity: 0.5;"
+      }
+    },
+    "Blacklist": {
+      "default": {
+        "blacklist": ""
+      },
+      "unnamed_1583308075357": {
+        "blacklist": ""
+      },
+      "unnamed_1583308075357_copy_1583308079045": {
+        "blacklist": ""
+      },
+      "new": {
+        "blacklist": ""
+      },
+      "default_copy_1583308113569": {
+        "blacklist": "http://localhost:8888/notebooks/*"
+      }
+    }
+  }
+}
