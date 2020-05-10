@@ -27,26 +27,8 @@ get_battery_charging_status() {
 }
 
 get_cpu() {
-    # 计算CPU使用率(上一秒)
-    # CPU使用率计算公式：CPU_USAGE=(IDLE2-IDLE1) / (CPU_TIME2-CPU_TIME1) * 100
-    # CPU_TIME计算公式 ：CPU_TIME=user + system + nice + idle + iowait + irq + softirq
-    PRE_CPU_INFO=$(cat /proc/stat | grep -w cpu | awk '{print $2,$3,$4,$5,$6,$7,$8}')
-    IDLE1=$(echo $PRE_CPU_INFO | awk '{print $4}')
-    CPU_TIME1=$(echo $PRE_CPU_INFO | awk '{print $1+$2+$3+$4+$5+$6+$7}')
-
-    # 计算CPU使用率(下一秒)
-    NEXT_CPU_INFO=$(cat /proc/stat | grep -w cpu | awk '{print $2,$3,$4,$5,$6,$7,$8}')
-    IDLE2=$(echo $NEXT_CPU_INFO | awk '{print $4}')
-    CPU_TIME2=$(echo $NEXT_CPU_INFO | awk '{print $1+$2+$3+$4+$5+$6+$7}')
-    # (IDLE2 - IDLE1)
-    SYSTEM_IDLE=`echo ${IDLE2} ${IDLE1} | awk '{print $1-$2}'`
-    # (CPU_TIME2 - CPU_TIME1)
-    TOTAL_TIME=`echo ${CPU_TIME2} ${CPU_TIME1} | awk '{print $1-$2}'`
-    # (IDLE2-IDLE1) / (CPU_TIME2-CPU_TIME1) * 100
-	# CPU UASGE
-    echo ${SYSTEM_IDLE} ${TOTAL_TIME} | awk '{printf "%.2f", 100-$1/$2*100}'
+	cpu=$(top -b -n1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' '{split($1, vs, ","); v=vs[length(vs)]; sub(/\s+/, "", v);sub(/\s+/, "", v); printf "%.1f", 100-v;}')
+	echo $cpu
 }
 
-cpu=`top -b -n1 | fgrep "Cpu(s)" | tail -1 | awk -F'id,' '{split($1, vs, ","); v=vs[length(vs)]; sub(/\s+/, "", v);sub(/\s+/, "", v); printf "%.1f", 100-v;}'`
-
-xsetroot -name "💻$cpu|$(get_battery_charging_status)$(get_battery_combined_percent)% [☯$(get_mem)M]$(get_time)🕑ST"
+xsetroot -name "💻$(get_cpu)|$(get_battery_charging_status)$(get_battery_combined_percent)% [☯$(get_mem)M]$(get_time)🕑ST"
