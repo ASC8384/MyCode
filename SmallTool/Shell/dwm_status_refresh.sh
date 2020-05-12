@@ -44,4 +44,21 @@ get_temp() {
 	echo "$PREFIX$CPU_TEMP°C"
 }
 
-xsetroot -name "$(get_temp)¦💻$(get_cpu)|$(get_battery_charging_status)$(get_battery_combined_percent)%[☯$(get_mem)M]$(get_time)🕑ST"
+get_alsa () {
+    VOL=$(pamixer --get-volume-human | tr -d '%')
+    printf "%s" "$SEP1"
+	if [ "$VOL" = "muted" ] || [ "$VOL" -eq 0 ]; then
+		printf "🔇"
+	elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
+		printf "🔈 %s%%" "$VOL"
+	elif [ "$VOL" -gt 33 ] && [ "$VOL" -le 66 ]; then
+		printf "🔉 %s%%" "$VOL"
+	else
+		printf "🔊 %s%%" "$VOL"
+	fi
+    printf "%s\n" "$SEP2"
+}
+
+# ['|', '¦', '┆', '┊']
+
+xsetroot -name "$(get_alsa)┆$(get_temp)¦💻$(get_cpu)|$(get_battery_charging_status)$(get_battery_combined_percent)%[☯$(get_mem)M]$(get_time)🕑ST"
