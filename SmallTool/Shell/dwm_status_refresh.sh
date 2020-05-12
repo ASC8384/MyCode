@@ -44,4 +44,4 @@ get_temp() {
 	echo "$PREFIX$CPU_TEMP°C"
 }
 
-xsetroot -name "$(get_temp)💻$(get_cpu)|$(get_battery_charging_status)$(get_battery_combined_percent)% [☯$(get_mem)M]$(get_time)🕑ST"
+xsetroot -name "$(get_temp)¦💻$(get_cpu)|$(get_battery_charging_status)$(get_battery_combined_percent)% [☯$(get_mem)M]$(get_time)🕑ST"
