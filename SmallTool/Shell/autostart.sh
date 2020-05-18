@@ -15,6 +15,12 @@ fi
 picom -b --config ~/.config/picom.conf
 
 sleep 1s
+
+# proxy gui
 python ~/code/github/v2rayL/v2rayL-GUI/v2rayLui.py &
+# nutstore
+~/.nutstore/dist/bin/nutstore-pydaemon.py >/dev/null 2>&1 &
+
+# restart for gnome
 PID=$(ps a | grep -v grep | grep -w dwm | grep -v /usr/ | awk '{printf $1}')
 kill -HUP $PID
