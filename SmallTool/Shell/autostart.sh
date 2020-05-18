@@ -15,5 +15,6 @@ fi
 picom -b --config ~/.config/picom.conf
 
 sleep 1s
+python ~/code/github/v2rayL/v2rayL-GUI/v2rayLui.py &
 PID=$(ps a | grep -v grep | grep -w dwm | grep -v /usr/ | awk '{printf $1}')
 kill -HUP $PID
