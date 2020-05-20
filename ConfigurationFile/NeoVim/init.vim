@@ -14,6 +14,7 @@ set nofoldenable
 set laststatus=2 " 总显示最后一个窗口的状态行；设为1则窗口数多于一个的时候显示最后一个窗口的状态行；0不显示最后一个窗口的状态行
 set showcmd " 命令行显示输入的命令
 set helplang=cn
+set cursorline " 突出显示当前行
 
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ";"
@@ -55,10 +56,12 @@ noremap ? :set hlsearch<cr>?
 noremap * *:set hlsearch<cr>
 
 " 自动换行缩进
-set autoindent
+set autoindent " essentially tells vim to apply the indentation of the current line to the next (created by pressing enter in insert mode or with O or o in normal mode.
+set smartindent " reacts to the syntax/style of the code you are editing (especially for C).
 set tabstop=4
 set softtabstop=4 " 在按退格键时，如果前面有4个空格，则会统一清除
-set shiftwidth=4
+set shiftwidth=4  " 设定 << 和 >> 命令移动时的宽度为 4
+set smarttab
 
 " 备份
 set nobackup
@@ -74,9 +77,9 @@ set fileencodings=utf-8
 
 " 打开文件时恢复光标位置
 autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+    \	if line("'\"") > 1 && line("'\"") <= line("$") |
+    \		exe "normal! g`\"" |
+    \	endif
 
 " github 鏡像
 let g:plug_url_format = 'https://hub.fastgit.org/%s.git'
@@ -118,13 +121,13 @@ let g:which_key_map = {}
 
 " modules
 let $VIM_PATH =
-	\ get(g:, 'etc_vim_path',
-	\   exists('*stdpath') ? stdpath('config') :
-	\   ! empty($MYVIMRC) ? fnamemodify(expand($MYVIMRC), ':h') :
-	\   ! empty($VIMCONFIG) ? expand($VIMCONFIG) :
-	\   ! empty($VIM_PATH) ? expand($VIM_PATH) :
-	\   fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
-	\ )
+	\	get(g:, 'etc_vim_path',
+	\	exists('*stdpath') ? stdpath('config') :
+	\		! empty($MYVIMRC) ? fnamemodify(expand($MYVIMRC), ':h') :
+	\		! empty($VIMCONFIG) ? expand($VIMCONFIG) :
+	\		! empty($VIM_PATH) ? expand($VIM_PATH) :
+	\		fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
+	\	)
 source $VIM_PATH/modules/defx.vim
 source $VIM_PATH/modules/coc.vim
 
