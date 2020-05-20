@@ -1,0 +1,10 @@
+{
+	"suggest.enablePreview":true,
+	"suggest.snippetIndicator": "►",
+
+	// c/c++ highlight
+	"clangd.enabled": true,
+	"clangd.semanticHighlighting": true,
+	"languageserver": {
+	}
+}
