@@ -20,6 +20,7 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = ";"
 
 inoremap jk <ESC>
+nnoremap <C-a> ggVG"+y
 " nmap <c-j> <c-w>j
 " nmap <c-k> <c-w>k
 " nmap <c-h> <c-w>h
@@ -115,6 +116,8 @@ call plug#begin( stdpath('data') . '/plugged' )
 	Plug 'liuchengxu/vista.vim'
 	" c/c++ lsp highlight
 	Plug 'jackguo380/vim-lsp-cxx-highlight'
+	" quick run
+	Plug 'skywind3000/asyncrun.vim'
 	Plug 'ryanoasis/vim-devicons' " icon
 call plug#end()
 let g:which_key_map = {}
