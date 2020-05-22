@@ -241,7 +241,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " rainbow
 let g:rainbow_active = 1
 let g:rainbow_conf = {
-	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'guifgs': ['lightblue', 'lightyellow', 'darkorange3', 'seagreen3', 'firebrick', 'royalblue3'],
 	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
 	\	'operators': '_,_',
 	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
