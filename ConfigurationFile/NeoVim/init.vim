@@ -134,6 +134,26 @@ let $VIM_PATH =
 source $VIM_PATH/modules/defx.vim
 source $VIM_PATH/modules/coc.vim
 
+" quick run
+" function! CompileRun() abort
+" 	:AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"
+" endfunction
+" nnoremap <F12> :call CompileRun()<CR>
+nnoremap <F12> :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
+autocmd User AsyncRunStop :call <SID>asyncrun_stop()
+function! s:asyncrun_stop()
+	if (g:asyncrun_code ==# 0)
+		:AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"
+		" cclose
+		copen 4
+	else
+		copen
+	endif
+endfunction
+" Quickfix window
+let g:asyncrun_open = 6
+nnoremap <F1> :call asyncrun#quickfix_toggle(6)<cr>
+
 " colorscheme
 set bg=dark
 set termguicolors
@@ -145,7 +165,7 @@ hi LineNr	guibg=None ctermbg=None
 hi SignColumn guibg=None ctermbg=None
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
-  call webdevicons#refresh()
+	call webdevicons#refresh()
 endif
 let g:webdevicons_enable=1
 " startify
@@ -281,8 +301,8 @@ let g:mkdp_echo_preview_url = 1
 "   top: mean the vim top viewport alway show at the top of the preview page
 "   relative: mean the cursor position alway show at the relative positon of the preview page
 let g:mkdp_preview_options = {
-    \ 'sync_scroll_type': 'middle',
-	\ }
+    \	'sync_scroll_type': 'middle',
+	\	}
 
 " Vista
 nnoremap <F2> <ESC>:Vista!!<CR>
@@ -301,10 +321,10 @@ let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 " The default icons can't be suitable for all the filetypes, you can extend it as you wish.
 let g:vista#renderer#icons = {
-	\ "function": "\uf794",
-	\ "variable": "\uf71b",
-	\ }
-
+	\	"function": "\uf794",
+	\	"variable": "\uf71b",
+	\	}
+      	
 " caw comment
 nmap <Leader>c <Plug>(caw:prefix)
 xmap <Leader>c <Plug>(caw:prefix)
