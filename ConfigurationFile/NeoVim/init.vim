@@ -186,6 +186,9 @@ nnoremap <F8> :call asyncrun#quickfix_toggle(6)<cr>
 let g:asyncrun_bell = 1
 let g:asyncrun_status = ''
 let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+" fugitive
+" The '@' sign is a separator to indicate following string is the parameters of 'make'.
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 " colorscheme
 set bg=dark
@@ -357,7 +360,7 @@ let g:vista#renderer#icons = {
 	\	"function": "\uf794",
 	\	"variable": "\uf71b",
 	\	}
-      	
+
 " caw comment
 nmap <Leader>c <Plug>(caw:prefix)
 xmap <Leader>c <Plug>(caw:prefix)
