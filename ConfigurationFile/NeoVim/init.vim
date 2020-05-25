@@ -167,16 +167,18 @@ sign define vimspectorPC text=🔶 texthl=SpellBad
 " nnoremap <F12> :call CompileRun()<CR>
 nnoremap <F1> :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
 nnoremap <leader>lc :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
-autocmd User AsyncRunStop :call <SID>asyncrun_stop()
-function! s:asyncrun_stop()
-	if (g:asyncrun_code ==# 0)
-		:AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"
-		" cclose
-		copen 4
-	else
-		copen 8
-	endif
-endfunction
+nnoremap <F12> :AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
+nnoremap <leader>lr :AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
+" autocmd User AsyncRunStop :call <SID>asyncrun_stop()
+" function! s:asyncrun_stop()
+" 	if (g:asyncrun_code ==# 0)
+" 		:AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"
+" 		" cclose
+" 		copen 4
+" 	else
+" 		copen 8
+" 	endif
+" endfunction
 " Quickfix window
 let g:asyncrun_open = 6
 nnoremap <F12> :call asyncrun#quickfix_toggle(6)<cr>
