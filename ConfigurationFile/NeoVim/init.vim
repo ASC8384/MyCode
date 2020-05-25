@@ -118,6 +118,8 @@ call plug#begin( stdpath('data') . '/plugged' )
 	Plug 'jackguo380/vim-lsp-cxx-highlight'
 	" quick run
 	Plug 'skywind3000/asyncrun.vim'
+	" Debugger
+	Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 	Plug 'ryanoasis/vim-devicons' " icon
 call plug#end()
 let g:which_key_map = {}
@@ -134,12 +136,37 @@ let $VIM_PATH =
 source $VIM_PATH/modules/defx.vim
 source $VIM_PATH/modules/coc.vim
 
+" debuger
+" let g:vimspector_enable_mappings = 'HUMAN'
+nmap <F3> <Plug>VimspectorStop
+nmap <F4> <Plug>VimspectorRestart
+nmap <F5> <Plug>VimspectorContinue
+nmap <F6> <Plug>VimspectorPause
+nmap <F9> <Plug>VimspectorToggleBreakpoint
+nmap <F10> <Plug>VimspectorStepOver
+nmap <F11> <Plug>VimspectorStepInto
+" 🔴🔵🔶
+sign define vimspectorBP text=☛ texthl=Normal
+sign define vimspectorBPDisabled text=☞ texthl=Normal
+sign define vimspectorPC text=🔶 texthl=SpellBad
+" function! s:read_template_into_buffer(template)
+" 	" has to be a function to avoid the extra space fzf#run insers otherwise
+" 	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+" endfunction
+" command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
+"	\	'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+"	\	'down': 20,
+"	\	'sink': function('<sid>read_template_into_buffer')
+"	\	})
+" noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
+
 " quick run
 " function! CompileRun() abort
 " 	:AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"
 " endfunction
 " nnoremap <F12> :call CompileRun()<CR>
-nnoremap <F12> :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
+nnoremap <F1> :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
+nnoremap <leader>lc :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
 autocmd User AsyncRunStop :call <SID>asyncrun_stop()
 function! s:asyncrun_stop()
 	if (g:asyncrun_code ==# 0)
@@ -147,12 +174,14 @@ function! s:asyncrun_stop()
 		" cclose
 		copen 4
 	else
-		copen
+		copen 8
 	endif
 endfunction
 " Quickfix window
 let g:asyncrun_open = 6
-nnoremap <F1> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <F12> :call asyncrun#quickfix_toggle(6)<cr>
+" 命令结束后是否响铃
+let g:asyncrun_bell = 1
 
 " colorscheme
 set bg=dark
