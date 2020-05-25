@@ -184,6 +184,8 @@ let g:asyncrun_open = 6
 nnoremap <F8> :call asyncrun#quickfix_toggle(6)<cr>
 " 命令结束后是否响铃
 let g:asyncrun_bell = 1
+let g:asyncrun_status = ''
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 " colorscheme
 set bg=dark
