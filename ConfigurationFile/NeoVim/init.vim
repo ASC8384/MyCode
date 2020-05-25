@@ -181,7 +181,7 @@ nnoremap <leader>lr :AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(
 " endfunction
 " Quickfix window
 let g:asyncrun_open = 6
-nnoremap <F12> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <F8> :call asyncrun#quickfix_toggle(6)<cr>
 " 命令结束后是否响铃
 let g:asyncrun_bell = 1
 
