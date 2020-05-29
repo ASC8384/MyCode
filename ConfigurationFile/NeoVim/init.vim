@@ -247,6 +247,9 @@ nnoremap <LocalLeader>n :FloatermNew
 nnoremap <LocalLeader>j :FloatermNext<CR>
 nnoremap <LocalLeader>k :FloatermPrev<CR>
 
+" coc-pairs
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Startify
 
 " Leaderf
