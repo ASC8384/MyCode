@@ -1,5 +1,6 @@
 get_time(){
-	date '+%y-%m-%d%a%T'
+	# date '+%y-%m-%d%a🕑%T'
+	date '+%m-%d%a🕑%T'
 }
 
 get_mem(){
@@ -16,7 +17,6 @@ get_battery_combined_percent() {
 	percent=$(expr $total_charge / $battery_number);
 	echo $percent;
 }
-
 
 get_battery_charging_status() {
 	if $(acpi -b | grep --quiet Discharging); then
@@ -61,4 +61,4 @@ get_alsa () {
 
 # ['|', '¦', '┆', '┊']
 
-xsetroot -name "$(get_alsa)┆$(get_temp)¦💻$(get_cpu)|$(get_battery_charging_status)$(get_battery_combined_percent)%[☯$(get_mem)M]$(get_time)🕑ST"
+xsetroot -name "$(get_alsa)┆$(get_temp)¦💻 $(get_cpu)|$(get_battery_charging_status) $(get_battery_combined_percent)%[☯ $(get_mem)M]$(get_time)"
