@@ -19,51 +19,35 @@ inline void qread(T1 &IEE, T2 &... ls) {
 	return;
 }
 
-ll a, b;
-ll srtayade() {
-	if(a % b) {
-
-	} else {
-		ll k   = a / b;
-		ll ans = 0;
-		while(k != 1) {
-			if(k & 1)
-				return -1;
-			ans++;
-			k >>= 1;
-		}
-		return ans / 3 + ((ans % 3) > 0);
-	}
-	return -1;
-}
-
 int main() {
 	int t;
 	qread(t);
-
 	while(t--) {
+		ll a, b;
 		qread(a, b);
-		if(a < b) {
-			ll t = b;
-			b	 = a;
-			a	 = t;
+		if(a > b)
+			swap(a, b);
+		if(b % a) {
+			cout << -1 << endl;
+		} else {
+			ll ans = 0;
+			b /= a;
+			while(b % 8 == 0) {
+				b >>= 3;
+				ans++;
+			}
+			while(b % 4 == 0) {
+				b >>= 2;
+				ans++;
+			}
+			while(b % 2 == 0) {
+				b >>= 1;
+				ans++;
+			}
+			if(b != 1)
+				cout << -1 << endl;
+			else
+				cout << ans << endl;
 		}
-		ll sum = 0;
-		// ll ans = (n << 1);
-		// if(a % b) {
-		// 	ans = 0;
-		// 	ll k = a / b;
-		// 	ans++;
-		// 	k >>= 1;
-		//     while(k != 1){
-		//         if(k & 1)
-
-		//     }
-		// } else {
-		// 	cout << -1 << endl;
-		// }
-		ll ans = srtayade();
-		cout << ans << endl;
 	}
-	return 0;
 }
