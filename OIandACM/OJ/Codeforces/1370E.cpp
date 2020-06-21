@@ -3,12 +3,12 @@ using namespace std;
 
 const long long size = 1e6 + 119;
 
-bool a[size], b[size], f[size];
-long long	 n;
-long long	 t1[size], t2[size];
-long long	 suma, sumb;
-long long	 cnt1, cnt2;
-long long	 now1, now2;
+bool	  a[size], b[size], f[size];
+long long n;
+long long t1[size], t2[size];
+long long suma, sumb;
+long long cnt1, cnt2;
+long long now1, now2;
 
 long long find(bool flag, long long now) {
 	for(long long i = now; i <= n; i++)
@@ -64,42 +64,16 @@ int main() {
 	}
 	if(suma == 0 || sumb == n)
 		cout << 0 << endl;
-	for(long long i = 1; i <= n; i++)
-		if(a[i] == b[i]) {
-			f[i] = true;
-		} else {
-			if(a[i])
-				t1[++cnt1] = i;
-			else
-				t2[++cnt2] = i;
+	else {
+		int ans1 = 0, ans2 = 0;
+		int tmp = 0;
+		for(int i = 1; i <= n; i++) {
+			tmp += a[i] - '0';
+			tmp -= b[i] - '0';
+			ans1 = max(tmp, ans1);
+			ans2 = min(tmp, ans2);
 		}
-	long long ans = 0;
-	long long len = max(t1[cnt1], t2[cnt2]);
-	if(t1[1] < t2[1])
-		now1 = 1;
-	else
-		now2 = 1;
-	for(long long i = min(t1[1], t2[1]); i <= len; i++) {
-		if(f[i])
-			continue;
-		bool tmp = a[i];
-		long long	 pos = i + 1;
-		while(true) {
-			if(pos = is(tmp, pos)) {
-				tmp = !tmp;
-				pos++;
-			} else {
-				break;
-			}
-			// if(pos = find(tmp, pos)) {
-			// 	tmp = !tmp;
-			// 	pos++;
-			// } else {
-			// 	break;
-			// }
-		}
-		ans++;
+		cout << ans1 - ans2 << endl;
 	}
-	cout << ans << endl;
 	return 0;
 }
