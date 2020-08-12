@@ -96,5 +96,5 @@ dkms.conf
 
 .vscode/
 .clang-format
-tempCodeRunnerFile.c
-tempCodeRunnerFile.cpp
+tempCodeRunnerFile.*
+Blog/.ipynb_checkpoints/*
