@@ -54,14 +54,15 @@ int le, ri;
 
 void solve() {
 	le = 0;
-	ri = 1 << 8;
+	ri = 1 << 10;
 	while(le <= ri) {
 		mp.clear();
-		mid	 = (le + ri) >> 1;
+		// mid	 = (le + ri) >> 1;
+		mid	 = le;
 		flag = false;
 		dfs(0, 1);
 		if(flag) {
-			ri--;
+			return;
 		} else
 			le++;
 	}
