@@ -39,7 +39,7 @@ ll CRT(const ll a[], const ll m[], ll n) {
 	for(ll i = 1; i <= n; i++) {
 		ll Mi = M / m[i];
 		ll ti = inv(Mi, m[i]);
-		ret	  = (ret + a[i] * Mi % M * ti) % M;
+		ret = (ret + a[i] * Mi % M * ti % M) % M;
 	}
 	return (ret + M) % M;
 }
