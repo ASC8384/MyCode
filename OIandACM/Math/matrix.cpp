@@ -5,19 +5,20 @@ const int size = 16;
 ll mod;
 
 struct mat {
+	// n 行 m 列
 	ll	a[size][size];
 	int n, m;
 	mat(int x = 0, int y = 0) : n(x), m(y) {}
 	void prt() {
 		printf("%d %d\n", n, m);
 		for(int i = 1; i <= n; i++) {
-			for(int j = 1; j <= n; j++) {
+			for(int j = 1; j <= m; j++) {
 				printf("%d ", a[i][j]);
 			}
 			putchar('\n');
 		}
 	}
-	mat operator*(const mat &x) const {
+	mat operator*(const mat &x) const { // 矩阵乘法
 		mat ret;
 		ret.n = n;
 		ret.m = x.m;
@@ -28,7 +29,7 @@ struct mat {
 					ret.a[i][j] = (ret.a[i][j] + a[i][k] * x.a[k][j] % mod) % mod;
 		return ret;
 	}
-	friend mat operator^(mat &x, ll t) {
+	friend mat operator^(mat &x, ll t) { // 矩阵快速幂
 		mat ret = mat(x.n, x.n);
 		memset(ret.a, 0, sizeof(ret.a));
 		for(int i = 1; i <= x.n; i++) {
