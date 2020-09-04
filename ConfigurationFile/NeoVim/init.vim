@@ -140,7 +140,7 @@ source $VIM_PATH/modules/coc.vim
 " let g:vimspector_enable_mappings = 'HUMAN'
 nmap <F3> <Plug>VimspectorStop
 nmap <F4> <Plug>VimspectorRestart
-nmap <F5> <Plug>VimspectorContinue
+nmap <S-F5> <Plug>VimspectorContinue
 nmap <F6> <Plug>VimspectorPause
 nmap <F9> <Plug>VimspectorToggleBreakpoint
 nmap <F10> <Plug>VimspectorStepOver
@@ -169,6 +169,11 @@ nnoremap <F1> :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "
 nnoremap <leader>lc :AsyncRun -save=1 g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
 nnoremap <F12> :AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
 nnoremap <leader>lr :AsyncRun -mode=term -pos=right -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"<CR>
+function Runcoder() " compile and run code
+	:AsyncRun -mode=term -pos=right -save=1 -cwd=$(VIM_FILEDIR) g++ -Wall -std=c++11 -O2 -Wno-unused-result -g "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe" && time "$(VIM_FILEDIR)/$(VIM_FILENOEXT).exe"
+endfunction
+nnoremap <F5> :call Runcoder() <CR>
+inoremap <F5> <ESC> :call Runcoder() <CR>
 " autocmd User AsyncRunStop :call <SID>asyncrun_stop()
 " function! s:asyncrun_stop()
 " 	if (g:asyncrun_code ==# 0)
