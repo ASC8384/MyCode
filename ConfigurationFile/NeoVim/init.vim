@@ -78,9 +78,9 @@ set fileencodings=utf-8
 
 " 打开文件时恢复光标位置
 autocmd BufReadPost *
-    \	if line("'\"") > 1 && line("'\"") <= line("$") |
-    \		exe "normal! g`\"" |
-    \	endif
+	\	if line("'\"") > 1 && line("'\"") <= line("$") |
+	\		exe "normal! g`\"" |
+	\	endif
 
 " github 鏡像
 let g:plug_url_format = 'https://hub.fastgit.org/%s.git'
@@ -102,7 +102,7 @@ call plug#begin( stdpath('data') . '/plugged' )
 	Plug 'simnalamburt/vim-mundo' " 历史记录
 	" Plug 'plasticboy/vim-markdown' " markdown
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " markdown preview
-    " Plug 'rbgrouleff/bclose.vim'
+	" Plug 'rbgrouleff/bclose.vim'
 	" Plug 'francoiscabrol/ranger.vim' "ranger
 	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 		Plug 'kristijanhusak/defx-icons'
@@ -345,7 +345,7 @@ let g:mkdp_echo_preview_url = 1
 "   top: mean the vim top viewport alway show at the top of the preview page
 "   relative: mean the cursor position alway show at the relative positon of the preview page
 let g:mkdp_preview_options = {
-    \	'sync_scroll_type': 'middle',
+	\	'sync_scroll_type': 'middle',
 	\	}
 
 " Vista
@@ -379,57 +379,57 @@ xmap <Leader>cl <Plug>(caw:hatpos:toggle)
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :WhichKey ';'<CR>
 let g:which_key_map = {
-    \ 'name': '+ST-vim',
-    \ 't' : ['tabnew', '新建 Tab'],
+	\ 'name': '+ST-vim',
+	\ 't' : ['tabnew', '新建 Tab'],
 	\ 'n' : ['tabn', 'Tab Next'],
-    \ '1' : [':tabn 1', 'tab-1'],
-    \ '2' : [':tabn 2', 'tab-2'],
-    \ '3' : [':tabn 3', 'tab-3'],
-    \ '4' : [':tabn 4', 'tab-4'],
-    \ '5' : [':tabn 5', 'tab-5'],
-    \ '6' : [':tabn 6', 'tab-6'],
-    \ '7' : [':tabn 7', 'tab-7'],
-    \ '8' : [':tabn 8', 'tab-8'],
-    \ '9' : [':tabn 9', 'tab-9'],
-    \ }
+	\ '1' : [':tabn 1', 'tab-1'],
+	\ '2' : [':tabn 2', 'tab-2'],
+	\ '3' : [':tabn 3', 'tab-3'],
+	\ '4' : [':tabn 4', 'tab-4'],
+	\ '5' : [':tabn 5', 'tab-5'],
+	\ '6' : [':tabn 6', 'tab-6'],
+	\ '7' : [':tabn 7', 'tab-7'],
+	\ '8' : [':tabn 8', 'tab-8'],
+	\ '9' : [':tabn 9', 'tab-9'],
+	\ }
 let g:which_key_map['q'] = {
 	\ 'name' : '+关闭',
-    \ 'c' : ['tabclose', 'close-current-tab'],
+	\ 'c' : ['tabclose', 'close-current-tab'],
 	\ 'q' : ['q', 'quit'],
 	\ 'a' : ['qa', 'quit all'],
 	\ }
 let g:which_key_map['w'] = {
-    \ 'name' : '+windows' ,
-    \ 'w' : ['<C-W>w'     , 'other-window']          ,
-    \ 'd' : ['<C-W>c'     , 'delete-window']         ,
-    \ '-' : ['<C-W>s'     , 'split-window-below']    ,
-    \ '|' : ['<C-W>v'     , 'split-window-right']    ,
-    \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
-    \ 'h' : ['<C-W>h'     , 'window-left']           ,
-    \ 'j' : ['<C-W>j'     , 'window-below']          ,
-    \ 'l' : ['<C-W>l'     , 'window-right']          ,
-    \ 'k' : ['<C-W>k'     , 'window-up']             ,
-    \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
-    \ 'J' : ['resize +5'  , 'expand-window-below']   ,
-    \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
-    \ 'K' : ['resize -5'  , 'expand-window-up']      ,
-    \ '=' : ['<C-W>='     , 'balance-window']        ,
-    \ 's' : ['<C-W>s'     , 'split-window-below']    ,
-    \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
-    \ '?' : ['Windows'    , 'fzf-window']            ,
-    \ }
+	\ 'name' : '+windows' ,
+	\ 'w' : ['<C-W>w'     , 'other-window']          ,
+	\ 'd' : ['<C-W>c'     , 'delete-window']         ,
+	\ '-' : ['<C-W>s'     , 'split-window-below']    ,
+	\ '|' : ['<C-W>v'     , 'split-window-right']    ,
+	\ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
+	\ 'h' : ['<C-W>h'     , 'window-left']           ,
+	\ 'j' : ['<C-W>j'     , 'window-below']          ,
+	\ 'l' : ['<C-W>l'     , 'window-right']          ,
+	\ 'k' : ['<C-W>k'     , 'window-up']             ,
+	\ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+	\ 'J' : ['resize +5'  , 'expand-window-below']   ,
+	\ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+	\ 'K' : ['resize -5'  , 'expand-window-up']      ,
+	\ '=' : ['<C-W>='     , 'balance-window']        ,
+	\ 's' : ['<C-W>s'     , 'split-window-below']    ,
+	\ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+	\ '?' : ['Windows'    , 'fzf-window']            ,
+	\ }
 let g:which_key_map.b = {
-    \ 'name' : '+buffer' ,
-    \ '1' : ['b1'        , 'buffer 1']        ,
-    \ '2' : ['b2'        , 'buffer 2']        ,
-    \ 'd' : ['bd'        , 'delete-buffer']   ,
-    \ 'f' : ['bfirst'    , 'first-buffer']    ,
-    \ 'h' : ['Startify'  , 'home-buffer']     ,
-    \ 'l' : ['blast'     , 'last-buffer']     ,
-    \ 'n' : ['bnext'     , 'next-buffer']     ,
-    \ 'p' : ['bprevious' , 'previous-buffer'] ,
-    \ '?' : ['Buffers'   , 'fzf-buffer']      ,
-    \ }
+	\ 'name' : '+buffer' ,
+	\ '1' : ['b1'        , 'buffer 1']        ,
+	\ '2' : ['b2'        , 'buffer 2']        ,
+	\ 'd' : ['bd'        , 'delete-buffer']   ,
+	\ 'f' : ['bfirst'    , 'first-buffer']    ,
+	\ 'h' : ['Startify'  , 'home-buffer']     ,
+	\ 'l' : ['blast'     , 'last-buffer']     ,
+	\ 'n' : ['bnext'     , 'next-buffer']     ,
+	\ 'p' : ['bprevious' , 'previous-buffer'] ,
+	\ '?' : ['Buffers'   , 'fzf-buffer']      ,
+	\ }
 let g:which_key_map.f = { 'name': '+find'}
 let g:which_key_map.c = { 'name': '+comment'}
 let g:which_key_map.g = { 'name': '+git'}
