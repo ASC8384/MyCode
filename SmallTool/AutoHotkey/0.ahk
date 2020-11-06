@@ -19,4 +19,6 @@ CapsLock & s::Send {WheelDown}
 
 ::asc::ASC_8384@foxmail.com
 
+CapsLock::Send {ESC}
+
 #NoTrayIcon
