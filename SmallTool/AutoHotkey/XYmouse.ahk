@@ -30,8 +30,7 @@ XButton2::
 		Return
 	}
 
-Existclass(class)
-{
+Existclass(class){
 	MouseGetPos, , , win
 	WinGet, winid, id, %class%
 	if win = %winid%
@@ -43,9 +42,9 @@ Existclass(class)
 gtrack:
 	mousegetpos xpos2,ypos2
 	track := (abs(ypos1-ypos2) >= abs(xpos1-xpos2)) ? (ypos1>ypos2 ? "u" : "d") : (xpos1>xpos2 ? "l" : "r")
-	if (track<>SubStr(gtrack, 0, 1)) and (abs(ypos1-ypos2)>4 or abs(xpos1-xpos2)>4)
-		gtrack.=track
-	xpos1 :=xpos2 , ypos1 := ypos2
+	if (track <> SubStr(gtrack, 0, 1)) and (abs(ypos1-ypos2) > 4 or abs(xpos1-xpos2) > 4)
+		gtrack .= track
+	xpos1 :=xpos2, ypos1 := ypos2
 	return
 
 #NoTrayIcon
