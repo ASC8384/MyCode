@@ -1,34 +1,38 @@
 typedef long long ll;
 
-const int size = 16;
+const int msize = 16;
 // const ll  mod  = 1e9 + 7;
-ll mod;
+const ll mod;
 
 struct mat {
 	// n 行 m 列
-	ll	a[size][size];
+	ll	a[msize][msize];
 	int n, m;
-	mat(int x = 0, int y = 0) : n(x), m(y) {}
+	mat(int x = 0, int y = 0) {
+		this->n = x;
+		this->m = y;
+		memset(this->a, 0, sizeof(this->a));
+	}
 	void prt() {
-		printf("%lld %lld\n", n, m);
+		cout << n << ' ' << m << '\n';
 		for(int i = 1; i <= n; i++) {
 			for(int j = 1; j <= m; j++) {
-				printf("%lld ", a[i][j]);
+				cout << a[i][j] << ' ';
 			}
-			putchar('\n');
+			cout << '\n';
 		}
 	}
 	void init() { memset(a, 0, sizeof(a)); }
-	mat operator*(const mat &x) const { // 矩阵乘法
-		mat ret;
-		ret.n = n;
-		ret.m = x.m;
-		memset(ret.a, 0, sizeof(ret.a));
-		for(int i = 1; i <= ret.n; i++)
-			for(int j = 1; j <= ret.m; j++)
-				for(int k = 1; k <= m; k++)
-					ret.a[i][j] = (ret.a[i][j] + a[i][k] * x.a[k][j] % mod) % mod;
-		return ret;
+	mat	 operator*(const mat &x) const { // 矩阵乘法
+		 mat ret;
+		 ret.n = n;
+		 ret.m = x.m;
+		 memset(ret.a, 0, sizeof(ret.a));
+		 for(int i = 1; i <= ret.n; i++)
+			 for(int j = 1; j <= ret.m; j++)
+				 for(int k = 1; k <= m; k++)
+					 ret.a[i][j] = (ret.a[i][j] + a[i][k] * x.a[k][j] % mod) % mod;
+		 return ret;
 	}
 	friend mat operator^(mat &y, ll t) { // 矩阵快速幂
 		mat x	= y;
