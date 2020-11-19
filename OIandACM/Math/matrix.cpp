@@ -18,6 +18,7 @@ struct mat {
 			putchar('\n');
 		}
 	}
+	void init() { memset(a, 0, sizeof(a)); }
 	mat operator*(const mat &x) const { // 矩阵乘法
 		mat ret;
 		ret.n = n;
