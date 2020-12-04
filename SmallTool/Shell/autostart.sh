@@ -17,8 +17,10 @@ picom -b --config ~/.config/picom.conf
 sleep 1s
 
 # proxy gui
-electron-ssr &
+clash &
+# electron-ssr &
 # python ~/code/github/v2rayL/v2rayL-GUI/v2rayLui.py &
+
 # nutstore
 ~/.nutstore/dist/bin/nutstore-pydaemon.py >/dev/null 2>&1 &
 
