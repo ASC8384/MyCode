@@ -1,12 +1,27 @@
+/*
+** Author:	ASC_8384
+** Website:	www.ASC8384.top
+** License:	CC0
+** Time:	2020-11-19 21:18:37
+*/
+#include <bits/stdc++.h>
 typedef long long ll;
+using namespace std;
+mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
 
-const int msize = 16;
+// const int size = 2e5 + 9;
+const ll mod = 1e9 + 7;
+
+//typedef long long ll;
+
 // const ll  mod  = 1e9 + 7;
-const ll mod;
+// ll mod;
+
+const int size = 16;
 
 struct mat {
 	// n 行 m 列
-	ll	a[msize][msize];
+	ll	a[size][size];
 	int n, m;
 	mat(int x = 0, int y = 0) {
 		this->n = x;
@@ -50,3 +65,30 @@ struct mat {
 		return ret;
 	}
 };
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+
+	int t = 1;
+	cin >> t;
+	mat a(3, 3);
+	// a.init();
+	a.a[1][1] = a.a[1][3] = a.a[2][1] = a.a[3][2] = 1;
+	// a.prt();
+	mat b(3, 1);
+	// b.prt();
+	b.a[1][1] = b.a[2][1] = b.a[3][1] = 1;
+	while(t--) {
+		int n;
+		cin >> n;
+		if(n <= 3)
+			cout << "1\n";
+		else
+			// mat x = (mat)(a ^ (n - 3)) * b;
+			cout << ((mat)(a ^ (n - 3)) * b).a[1][1] << '\n';
+	}
+
+	return 0;
+}
