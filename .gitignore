@@ -94,7 +94,14 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# C/C++
 .vscode/
 .clang-format
 tempCodeRunnerFile.*
+
+# Blog
 Blog/.ipynb_checkpoints/*
+
+# Java
+Main.class
+Main.java
