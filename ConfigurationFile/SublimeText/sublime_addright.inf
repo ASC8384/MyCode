@@ -1,0 +1,12 @@
+[Version]
+Signature="$Windows NT$"
+ 
+[DefaultInstall]
+AddReg=SublimeText3
+ 
+[SublimeText3]
+hkcr,"*\\shell\\SublimeText3",,,"Open with Sublime Text3"
+hkcr,"*\\shell\\SublimeText3\\command",,,"""%1%\sublime_text.exe"" ""%%1"" %%*"
+hkcr,"Directory\shell\SublimeText3",,,"Open with Sublime Text3"
+hkcr,"*\\shell\\SublimeText3","Icon",0x20000,"%1%\sublime_text.exe, 0"
+hkcr,"Directory\shell\SublimeText3\command",,,"""%1%\sublime_text.exe"" ""%%1"""
