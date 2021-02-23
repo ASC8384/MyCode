@@ -1,0 +1,12 @@
+[Version]
+Signature="$Windows NT$"
+
+[DefaultInstall]
+AddReg=VSCode
+
+[VSCode]
+hkcr,"*\\shell\\VSCode",,,"Open with VS Code"
+hkcr,"*\\shell\\VSCode\\command",,,"""%1%\Code.exe"" ""%%1"" %%*"
+hkcr,"Directory\shell\VSCode",,,"Open with VS Code"
+hkcr,"*\\shell\\VSCode","Icon",0x20000,"%1%\Code.exe, 0"
+hkcr,"Directory\shell\VSCode\command",,,"""%1%\Code.exe"" ""%%1"""
