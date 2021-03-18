@@ -20,9 +20,9 @@ ll le[size], ri[size];
 stack<int> s;
 
 int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	cout.tie(0);
+	// ios::sync_with_stdio(0);
+	// cin.tie(0);
+	// cout.tie(0);
 	// printf("1");
 
 	int t = 1;

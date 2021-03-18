@@ -7,7 +7,7 @@ Remove-Item -Recurse -Force -Path "data/user-data" -Include @("Backups", "Cache"
 # Download latest stable build
 curl.exe -L https://vscode-update.azurewebsites.net/latest/win32-x64-archive/stable -o stable.zip
 # Delete anything except user data, update script and downloaded zip file
-Get-ChildItem -Exclude @("data", "updateVSCode.ps1", "stable.zip") | Remove-Item -Recurse -Force
+Get-ChildItem -Exclude @("data", "updateVSCode.ps1", "stable.zip", "vscode_addright.inf") | Remove-Item -Recurse -Force
 # Unzip it
 Expand-Archive -Path "stable.zip" -DestinationPath .
 # Delete downloaded package
