@@ -72,6 +72,12 @@ Linux 下的软件我其实也没啥好分享的，毕竟自己比较菜，用�
 
 Linux 的 Shell 比 Windows（主要是生态问题）高到不知哪里去了。Oh My Zsh 和它的主题 powerlevel10k 是相当的好看耐用。不过该主题在 NVIM 下的 Floaterm 里有字体相关的bug。
 
+### 磁盘分区 gpartedbin
+
+gpartedbin 真的适合在 Linux 下进行分区管理。
+
+因为对硬盘的需求是无限的，故对双系统里的 Ubuntu 进行扩容。先在 Windows 下用 DiskGenius 进行压缩卷操作，如果动了系统盘还会自动进入 DiskGenius PE 系统进行分区。可是，如果直接在 DiskGenius 里对 Linux 文件分区进行操作，则会出现诸如`bitmap中有标记为已使用的簇`、`文件使用的簇被标记为空闲或与其他文件有交叉`等错误。最后还是进入 Linux 启动盘里，用 gpartedbin 进行扩容操作。
+
 ### Other
 
 Linux 下好用的软件其实有一大堆，但感觉都像常规操作。就不多提了罢。
