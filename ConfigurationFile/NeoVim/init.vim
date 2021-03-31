@@ -121,6 +121,8 @@ call plug#begin( stdpath('data') . '/plugged' )
 	" Debugger
 	Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 	Plug 'ryanoasis/vim-devicons' " icon
+	" 自动选择符号内文本
+	Plug 'gcmt/wildfire.vim'
 call plug#end()
 let g:which_key_map = {}
 
