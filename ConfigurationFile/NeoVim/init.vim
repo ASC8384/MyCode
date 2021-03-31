@@ -123,6 +123,8 @@ call plug#begin( stdpath('data') . '/plugged' )
 	Plug 'ryanoasis/vim-devicons' " icon
 	" 自动选择符号内文本
 	Plug 'gcmt/wildfire.vim'
+	" 多光标
+	Plug 'mg979/vim-visual-multi'
 call plug#end()
 let g:which_key_map = {}
 
