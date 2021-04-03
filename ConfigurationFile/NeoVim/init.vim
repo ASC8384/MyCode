@@ -83,7 +83,7 @@ autocmd BufReadPost *
 	\	endif
 
 " github 鏡像
-let g:plug_url_format = 'https://hub.fastgit.org/%s.git'
+" let g:plug_url_format = 'https://hub.fastgit.org/%s.git'
 
 call plug#begin( stdpath('data') . '/plugged' )
 	Plug 'yianwillis/vimcdoc' " cn doc
