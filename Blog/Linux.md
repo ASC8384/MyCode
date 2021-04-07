@@ -48,7 +48,7 @@ Linux 下的软件我其实也没啥好分享的，毕竟自己比较菜，用�
 
 就是 Rime 啦。
 
-在 Windows 下配好了，Linux 开箱即用😁。
+在 Windows 下配好了，Linux 开箱即用:smile:。
 
 详情依旧见我 Github。
 
@@ -68,6 +68,16 @@ Linux 下的软件我其实也没啥好分享的，毕竟自己比较菜，用�
 
 谁用谁知道，是真的轻。
 
+#### dwm
+
+* 如何在多显示器间进行切换
+	* Mod1 + ,
+	* Mod1 + .
+
+* 如何在多显示器间移动
+	* Mod1 + Shift + ,
+	* Mod1 + Shift + .
+
 ### Shell
 
 Linux 的 Shell 比 Windows（主要是生态问题）高到不知哪里去了。Oh My Zsh 和它的主题 powerlevel10k 是相当的好看耐用。不过该主题在 NVIM 下的 Floaterm 里有字体相关的bug。
@@ -77,6 +87,27 @@ Linux 的 Shell 比 Windows（主要是生态问题）高到不知哪里去了�
 gpartedbin 真的适合在 Linux 下进行分区管理。
 
 因为对硬盘的需求是无限的，故对双系统里的 Ubuntu 进行扩容。先在 Windows 下用 DiskGenius 进行压缩卷操作，如果动了系统盘还会自动进入 DiskGenius PE 系统进行分区。可是，如果直接在 DiskGenius 里对 Linux 文件分区进行操作，则会出现诸如`bitmap中有标记为已使用的簇`、`文件使用的簇被标记为空闲或与其他文件有交叉`等错误。最后还是进入 Linux 启动盘里，用 gpartedbin 进行扩容操作。
+
+### glances
+
+htop 是 top 的替代品，glance 很可能是 htop 的替代品。
+
+### xrandr
+
+用于显示器管理。
+
+```bash
+xrandr # 输出当前可用显示输出设备
+xrandr --output HDMI-1 --mode 1920x1080 --rate 60 # 当列表中出现多个刷新率，可以通过 --rate 选项改变，一次性设置或者分开设置（分辨率必须是上面输出列表中的分辨率）
+xrandr --output HDMI-1 --auto # 如果输出设备已经连接但被禁用，--auto 选项会以系统偏好的分辨率（最大分辨率）开启特定的输出设备
+xrandr --output HDMI-1 --off --output HDMI-2 --auto # 还可以用一条命令设置多个输出设备，例如，使用系统偏好的选项关闭 HDMI-1 并打开 HDMI-2
+
+# 镜像两个输出
+xrandr --output VGA1 --auto --same-as LVDS1 --mode 1024x768
+
+# 两个独立的输出，即显示不同的窗口和标签集
+xrandr --output VGA1 --auto --right-of LVDS1
+```
 
 ### Other
 
