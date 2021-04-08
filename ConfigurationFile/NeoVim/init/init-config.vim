@@ -72,6 +72,9 @@ set tabstop=4
 set softtabstop=4 " 在按退格键时，如果前面有4个空格，则会统一清除
 set shiftwidth=4  " 设定 << 和 >> 命令移动时的宽度为 4
 set smarttab
+" expandtab
+" 使用空格代替 TAB
+set expandtab
 
 augroup PythonTab
 	au!
@@ -171,6 +174,7 @@ set lazyredraw
 " 错误格式
 set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m
 " 设置分隔符可视
+" 注释，以使用 indentLine 插件
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
 " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=m

@@ -93,7 +93,7 @@ let g:webdevicons_enable_startify=1
 " let g:spaceline_seperate_style= 'arrow'
 " let g:airline#extensions#tabline#formatter = ''
 " let g:airline_theme=''
-" let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1
 let g:webdevicons_enable_airline_statusline=1
 let g:webdevicons_enable_airline_tabline=1
 " unicode symbols
