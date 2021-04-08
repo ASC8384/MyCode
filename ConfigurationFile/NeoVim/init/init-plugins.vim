@@ -202,4 +202,8 @@ let g:vista#renderer#icons = {
 	\	"variable": "\uf71b",
 	\	}
 
+" indentLine
+" If you want to highlight conceal color with your colorscheme, disable by
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
 so $VIM_PATH/modules/whichkey.vim
