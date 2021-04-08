@@ -125,12 +125,13 @@ endif
 " 代码折叠
 " -----------------------------------------------------------------
 if has('folding')
+	set nofoldenable
 	" 允许代码折叠
-	set foldenable
+	" set foldenable
 	" 代码折叠默认使用缩进
-	set fdm=indent
+	" set fdm=indent
 	" 默认打开所有缩进
-	set foldlevel=99
+	" set foldlevel=99
 endif
 
 " -----------------------------------------------------------------
