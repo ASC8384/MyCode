@@ -26,6 +26,7 @@
 call plug#begin( stdpath('data') . '/plugged' )
 
 Plug 'yianwillis/vimcdoc' " cn doc
+" Plug 'vimwiki/vimwiki' " Wikipedia
 
 " -----------------------------------------------------------------
 " basic
@@ -89,12 +90,20 @@ Plug 'liuchengxu/vista.vim'
 " quick run
 Plug 'skywind3000/asyncrun.vim'
 " Debugger
-Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
+" Plug 'puremourning/vimspector', {'do': './install_gadget.py --enable-c --enable-python'}
 Plug 'ryanoasis/vim-devicons' " icon
 " 多光标
 Plug 'mg979/vim-visual-multi'
+" 测速
+" Plug 'tweekmonster/startuptime.vim'
+" snippets
+Plug 'honza/vim-snippets'
 call plug#end()
 let g:which_key_map = {}
+
+" wikipedia
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " modules
 " source $VIM_PATH/modules/defx.vim
@@ -140,6 +149,7 @@ set signcolumn=yes
 let g:coc_global_extensions = [ 'coc-calc', 'coc-clangd', 'coc-cmake',
 	\ 'coc-html', 'coc-highlight', 'coc-html', 'coc-css', 'coc-tabnine', 'coc-git',
 	\ 'coc-json', 'coc-yaml', 'coc-explorer', 'coc-floaterm', 'coc-pairs',
+	\ 'coc-snippets',
 	\ 'coc-vimlsp']
 
 " Startify
@@ -191,6 +201,5 @@ let g:vista#renderer#icons = {
 	\	"function": "\uf794",
 	\	"variable": "\uf71b",
 	\	}
-
 
 so $VIM_PATH/modules/whichkey.vim
