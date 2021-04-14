@@ -109,3 +109,8 @@ Main.java
 # Testfile
 OIandACM/OJ/in.txt
 OIandACM/OJ/out.txt
+
+# gtags
+GPATH
+GRTAGS
+GTAGS
