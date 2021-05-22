@@ -158,7 +158,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias a="aria2c"
-alias ap="aria2c --all-proxy="http://127.0.0.1:3454" -c"
+alias ap="aria2c --all-proxy="http://127.0.0.1:7890" -c"
 alias lg="lazygit"
 alias ra="ranger"
 alias vi="nvim"

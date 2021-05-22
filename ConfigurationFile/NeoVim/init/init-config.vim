@@ -36,6 +36,9 @@ set ttimeoutlen=80
 " 映射上的超时在 1 秒以后发生
 set timeout
 set timeoutlen=1000
+" 行号设置
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 
 " -----------------------------------------------------------------
 " 搜索
