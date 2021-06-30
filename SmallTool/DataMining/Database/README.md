@@ -15,7 +15,7 @@ And then using `import NFTool` to enjoy it.
 #### Usage
 
 ```python
-import NFTool
+from NFTool import *
 
 
 if __name__ == '__main__':
