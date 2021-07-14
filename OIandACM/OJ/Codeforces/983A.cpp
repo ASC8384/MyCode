@@ -24,9 +24,8 @@ int main()
                     cout << "Infinite\n";
                 break;
             }
-            while (q % b == 0) {
+            while (q % b == 0)
                 q /= b;
-            }
         }
     }
 

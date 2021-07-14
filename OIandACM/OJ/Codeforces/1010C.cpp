@@ -15,10 +15,9 @@ int main()
     for(int i = 1; i <= n; i++){
         ll a;
         cin >> a;
-        d = __gcd(d, a%k);
+        d = __gcd(d, a);
     }
-    if(d == 0)
-        d = 1;
+    d = __gcd(d, k);
     cout << k / d << '\n';
     for(int i = 0; i < k / d; i++){
         cout << i * d << ' ';
