@@ -25,3 +25,17 @@ int ex_gcd(int a, int b, int &x, int &y){
 }
 
 //ax + by = gcd(x, y)
+typedef long long ll;
+ll ex_gcd(ll a, ll b, ll &x, ll &y){
+    if(!b){
+        x = 1;
+        y = 0;
+        return a;
+    }
+    ll ret, tmp;
+    ret = ex_gcd(b, a % b, x, y);
+    tmp = x;
+    x = y;
+    y = tmp - a / b * y;
+    return ret;
+}

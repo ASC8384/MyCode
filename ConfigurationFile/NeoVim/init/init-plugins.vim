@@ -14,10 +14,10 @@
 " 默认情况下的分组
 "------------------------------------------------------------------
 " if !exists('g:bundle_group')
-" 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-" 	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
-" 	let g:bundle_group += ['leaderf']
-" 	let g:bundle_group += ['keymaps']
+"   let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
+"   let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
+"   let g:bundle_group += ['leaderf']
+"   let g:bundle_group += ['keymaps']
 " endif
 
 "------------------------------------------------------------------
@@ -81,8 +81,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } } " mark
 " Plug 'francoiscabrol/ranger.vim' "ranger
 " 文件树
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-" 	Plug 'kristijanhusak/defx-icons'
-" 	Plug 'kristijanhusak/defx-git'
+"   Plug 'kristijanhusak/defx-icons'
+"   Plug 'kristijanhusak/defx-git'
 Plug 'voldikss/vim-floaterm' " 浮动终端
 Plug 'tyru/caw.vim' " 注释
 " 函数导航
@@ -98,6 +98,8 @@ Plug 'mg979/vim-visual-multi'
 " Plug 'tweekmonster/startuptime.vim'
 " snippets
 Plug 'honza/vim-snippets'
+" dot graphviz
+Plug 'wannesm/wmgraphviz.vim'
 call plug#end()
 let g:which_key_map = {}
 
@@ -115,14 +117,14 @@ sign define vimspectorBP text=☛ texthl=Normal
 sign define vimspectorBPDisabled text=☞ texthl=Normal
 sign define vimspectorPC text=🔶 texthl=SpellBad
 " function! s:read_template_into_buffer(template)
-" 	" has to be a function to avoid the extra space fzf#run insers otherwise
-" 	execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
+"   " has to be a function to avoid the extra space fzf#run insers otherwise
+"   execute '0r ~/.config/nvim/sample_vimspector_json/'.a:template
 " endfunction
 " command! -bang -nargs=* LoadVimSpectorJsonTemplate call fzf#run({
-"	\	'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
-"	\	'down': 20,
-"	\	'sink': function('<sid>read_template_into_buffer')
-"	\	})
+"   \   'source': 'ls -1 ~/.config/nvim/sample_vimspector_json',
+"   \   'down': 20,
+"   \   'sink': function('<sid>read_template_into_buffer')
+"   \   })
 " noremap <leader>vs :tabe .vimspector.json<CR>:LoadVimSpectorJsonTemplate<CR>
 
 " quick run
@@ -149,10 +151,10 @@ set shortmess+=c
 set signcolumn=yes
 " coc 擴展
 let g:coc_global_extensions = [ 'coc-calc', 'coc-clangd', 'coc-cmake',
-	\ 'coc-html', 'coc-highlight', 'coc-html', 'coc-css', 'coc-tabnine', 'coc-git',
-	\ 'coc-json', 'coc-yaml', 'coc-explorer', 'coc-floaterm', 'coc-pairs',
-	\ 'coc-snippets',
-	\ 'coc-vimlsp']
+    \ 'coc-html', 'coc-highlight', 'coc-html', 'coc-css', 'coc-tabnine', 'coc-git',
+    \ 'coc-json', 'coc-yaml', 'coc-explorer', 'coc-floaterm', 'coc-pairs',
+    \ 'coc-snippets',
+    \ 'coc-vimlsp']
 
 " Startify
 
@@ -182,8 +184,8 @@ let g:mkdp_echo_preview_url = 1
 "   top: mean the vim top viewport alway show at the top of the preview page
 "   relative: mean the cursor position alway show at the relative positon of the preview page
 let g:mkdp_preview_options = {
-	\	'sync_scroll_type': 'middle',
-	\	}
+    \   'sync_scroll_type': 'middle',
+    \   }
 
 " Vista
 " How each level is indented and what to prepend.
@@ -200,12 +202,15 @@ let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 " The default icons can't be suitable for all the filetypes, you can extend it as you wish.
 let g:vista#renderer#icons = {
-	\	"function": "\uf794",
-	\	"variable": "\uf71b",
-	\	}
+    \   "function": "\uf794",
+    \   "variable": "\uf71b",
+    \   }
 
 " indentLine
 " If you want to highlight conceal color with your colorscheme, disable by
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" dot
+" g:WMGraphviz_viewer = "zathura"
 
 so $VIM_PATH/modules/whichkey.vim
