@@ -26,39 +26,35 @@ public:
 	string state;  // 状态集
 	string begin;  // 开始状态
 	string end;	   // 终结符
-	bool   isDFA;
+	bool   isDFA;  // 是否是 DFA
 	DFA() {
 		isDFA = true;
 	}
-	bool is(string s) {
+	bool is(string s) { // DFA 的规则字符串判定
 		// string cur = begin[0];
 		string cur;
 		cur += begin[0];
 		for(int len = 0; len < s.size(); ++len) {
-			// cout << len << " " << cur << endl;;
-			string tmp = "";
-			for(auto j : rules) {
-				// cout << 333 << ' ' << j.cur << endl;
+			string tmp = "";	  // 存储边的权值
+			for(auto j : rules) { // 遍历所有规则
 				if(cur == j.xxx && j.yyy != "#")
-					tmp += j.yyy;
+					tmp += j.yyy; // 找到相同入口节点
 			}
-			// cout << 444 << ' ' << tmp << endl;
 			if(!find_ch(tmp, s[len]))
-				s[len] = '#';
-			cur = move_nxt(cur, s[len]);
+				s[len] = '#';			 // 当前单元不在里面
+			cur = move_nxt(cur, s[len]); // 寻找下一个
 		}
-		return find_ch(end, cur);
+		return find_ch(end, cur); // 是否是终结符
 	}
-	void get(string s) {
-		// cout << "get " << s << endl;
-		rules.push_back(rule(s));
-		if(++numx[s.substr(0, 2)] > 1)
+	void get(string s) {			   // 读入 DFA 规则
+		rules.push_back(rule(s));	   // 加边操作
+		if(++numx[s.substr(0, 2)] > 1) // 出现多次
 			isDFA = false;
 	}
 
 private:
 	unordered_map<string, int> numx;
-	struct rule {
+	struct rule { // 具体规则，链式前向星
 		string xxx, nxt, yyy;
 		rule(string s) {
 			xxx = s[0];
@@ -72,16 +68,15 @@ private:
 		}
 	};
 	vector<rule> rules;
+	// 寻找匹配成功的下一个状态
 	string move_nxt(string c, char x) {
 		string ss;
 		ss += x;
-		// cout << 111 << ' ' << c << ' ' << x << endl;
-		for(auto i : rules) {
-			// cout << 222 << ' ' << i.cur << ' ' << i.ini << endl;
-			if(i.xxx == c && i.yyy == ss)
+		for(auto i : rules) {			  // 遍历规则
+			if(i.xxx == c && i.yyy == ss) // 匹配成功
 				return i.nxt;
 		}
-		return "?";
+		return "?"; // 匹配失败，返回一个不存在的符号
 	}
 };
 
@@ -117,7 +112,7 @@ int main() {
 		} else {
 			if(++cnt < 5) {
 				if(cnt == 1) {
-					dfa.letter = s + "#";
+					dfa.letter = s + "#"; // # 代表结束
 				} else if(cnt == 2) {
 					dfa.state = s;
 				} else if(cnt == 3) {
@@ -145,4 +140,20 @@ Y 1 Y
 Q
 1010
 10010
+
+a b
+S A B C
+S
+C
+S a A
+S b B
+A a S
+A b C
+B a C
+B b S
+C a B
+C b A
+Q
+aaabbb
+abab
 */

@@ -2,18 +2,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 /* 不要修改这个标准输入函数 */
-void read_prog(string& prog)
-{
+void read_prog(string &prog) {
 	char c;
-	while(scanf("%c",&c)!=EOF){
+	while(scanf("%c", &c) != EOF) {
 		prog += c;
 	}
 }
 /* 你可以添加其他函数 */
 
-unordered_map<string, int> m;
-vector<pair<int, int>>	   now;
+// 存储token的起始与结尾位置
+vector<pair<int, int>> now;
 
+unordered_map<string, int> m;
+// 符号名到符号标号的映射
 void init() {
 	m["auto"]	  = 1;
 	m["break"]	  = 2;
@@ -95,6 +96,7 @@ void init() {
 	m["\""]		  = 78;
 }
 
+// 是否嵌套
 bool is(int x) {
 	for(auto i : now)
 		if(i.first <= x && x <= i.second)
@@ -102,14 +104,13 @@ bool is(int x) {
 	return false;
 }
 
-void Analysis()
-{
+void Analysis() {
 	string prog;
 	read_prog(prog);
 	/* 骚年们 请开始你们的表演 */
-    /********* Begin *********/
-    string str = prog;
-    map<string, string> patterns{
+	/********* Begin *********/
+	string				str = prog;
+	map<string, string> patterns{
 		// {"0-HEADERS", "<\\S+>"},
 		{"1-COMMENTS", "(\\/\\/[^\n]*)|(\\/\\*(\\s|.)*?\\*\\/)"},
 		{"2-KEYWORDS", "(\\bauto\\b)|(\\bbreak\\b)|(\\bcase\\b)|(\\bchar\\b)|(\\bconst\\b)|(\\bcontinue\\b)|(\\bdefault\\b)|(\\bdo\\b)|(\\bdouble\\b)|(\\belse\\b)|(\\benum\\b)|(\\bextern\\b)|(\\bfloat\\b)|(\\bfor\\b)|(\\bgoto\\b)|(\\bif\\b)|(\\bint\\b)|(\\blong\\b)|(\\bregister\\b)|(\\breturn\\b)|(\\bshort\\b)|(\\bsigned\\b)|(\\bsizeof\\b)|(\\bstatic\\b)|(\\bstruct\\b)|(\\bswitch\\b)|(\\btypedef\\b)|(\\bunion\\b)|(\\bunsigned\\b)|(\\bvoid\\b)|(\\bvolatile\\b)|(\\bwhile\\b)"},
@@ -120,27 +121,26 @@ void Analysis()
 		{"7-IDENTIFIERS", "[a-z|A-Z|_]+"},
 	};
 	init();
-	map<size_t, pair<string, string>> matches;
+	map<size_t, pair<string, string>> matches; // 匹配到的token
 	// vector<pair<string, string>> matches;
 
-	for(auto pat = patterns.begin(); pat != patterns.end(); ++pat) {
-		// cout << pat->first << '\t' << pat->second << endl;
-		regex r(pat->second);
+	for(auto pat = patterns.begin(); pat != patterns.end(); ++pat) { // 按字典序遍历模式
+		regex r(pat->second);										 // 进行匹配
 		auto  words_begin = sregex_iterator(str.begin(), str.end(), r);
 		auto  words_end	  = sregex_iterator();
-
+		// 遍历匹配结果
 		for(auto it = words_begin; it != words_end; ++it) {
-			if(is(it->position()))
+			if(is(it->position())) // 查询嵌套结果
 				continue;
+			// 存入答案
 			matches[it->position()] = make_pair(pat->first, it->str());
+			// 存储位置
 			now.push_back(make_pair(it->position(), it->position() + it->str().size() - 1));
-			// cout << it->position() << " " << it->str() << endl;
 		}
 	}
 	int	 i	   = 0;
 	auto match = matches.begin();
 	while(match != matches.end()) {
-		// cout << match->first << endl;
 		if(match->second.first == "7-IDENTIFIERS" || match->second.first == "6-FORMAT")
 			cout << ++i << ": <" << match->second.second << "," << 81 << ">";
 		else if(match->second.first == "3-NUMBERS")
@@ -152,6 +152,5 @@ void Analysis()
 		if(++match != matches.end())
 			cout << "\n";
 	}
-    /********* End *********/
-
+	/********* End *********/
 }
